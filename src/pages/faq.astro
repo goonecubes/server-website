@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Panel from "../components/Panel.astro";
 import { site } from "../site.js";
 
 const faqs = [
@@ -14,16 +15,11 @@ const faqs = [
 	["Is this affiliated with PixelTail Games or Tower Unite?", `No. Skyline Tower is an unofficial, community-run server. The original GMod Tower was made by PixelTail Games.`],
 ];
 ---
-<Base title="FAQs">
-	<div class="post">
-		<h2 class="section-title">Frequently Asked Questions</h2>
-		<div class="box">
-			{faqs.map(([q, a]) => (
-				<>
-					<h3>{q}</h3>
-					<p set:html={a} />
-				</>
-			))}
-		</div>
-	</div>
+<Base title="FAQ">
+	<h1 class="page-heading">Frequently Asked Questions</h1>
+	{faqs.map(([q, a]) => (
+		<Panel title={q}>
+			<p set:html={a} />
+		</Panel>
+	))}
 </Base>

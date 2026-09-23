@@ -1,24 +1,46 @@
 ---
 import Base from "../layouts/Base.astro";
+import Panel from "../components/Panel.astro";
 import { site } from "../site.js";
+
+const stores = [
+	{ logo: "towercondos", text: "Rent a condo and make it yours." },
+	{ logo: "sweetsuite", text: "Furniture for every room of your condo." },
+	{ logo: "towercasino", text: "Slots, poker, duels and prize wheels." },
+	{ logo: "toweroutfitters", text: "Player models, hats and accessories." },
+	{ logo: "centralcircuit", text: "Electronics and appliances." },
+	{ logo: "songbirds", text: "Instruments and everything musical." },
+	{ logo: "thetoystop2", text: "Toys, games and silly gadgets." },
+	{ logo: "basical", text: "Everyday odds and ends." },
+	{ logo: "smoothiebar", text: "Grab a drink by the pool." },
+];
 ---
 <Base title="About">
-	<div class="post">
-		<h2 class="section-title">About Skyline Tower</h2>
-		<div class="box">
-			<p><b>Skyline Tower</b> is a community-run revival of <b>GMod Tower</b>, the social hub for Garry's Mod where you hang out with friends, decorate your own condo, earn GMC, and hop into minigames without ever leaving the tower.</p>
+	<h1 class="page-heading">About Skyline Tower</h1>
 
-			<h3>The Tower</h3>
-			<p>Everything starts in the Lobby. Rent a condo and fill it with furniture, pets and trophies. Spend your GMC at the stores, watch videos with friends at the theater, gamble at the casino, dance at the nightclub, or relax at the pool and beach. Every so often a lobby event kicks off, and when you're ready for something bigger, step into a game portal and play one of our gamemodes.</p>
+	<Panel title="What is this place?">
+		<p><b>Skyline Tower</b> is a community-run revival of <b>GMod Tower</b>, the social hub for Garry's Mod where you hang out with friends, decorate your own condo, earn GMC, and hop into minigames without ever leaving the tower.</p>
+		<p>Everything starts in the Lobby. Spend your GMC at the stores, watch videos with friends at the theater, gamble at the casino, dance at the nightclub, or relax at the pool and beach. Every so often a lobby event kicks off, and when you're ready for something bigger, step into a game portal and play one of our <a href="/gamemodes">gamemodes</a>.</p>
+	</Panel>
 
-			<h3>GMC</h3>
-			<p>GMC is the tower's currency. Earn it by playing gamemodes, winning events and unlocking achievements, then spend it on furniture, hats, pets, particles and more.</p>
-
-			<h3>Our Goal</h3>
-			<p>GMod Tower meant a lot to a lot of people. We want to keep that experience alive, fix what's broken, and build it back up with the community. The original GMod Tower was created by <a href="https://www.pixeltailgames.com/">PixelTail Games</a>, who went on to make <a href="https://store.steampowered.com/app/394690/Tower_Unite/">Tower Unite</a>. Go check it out.</p>
-
-			<h3>Get Involved</h3>
-			<p>Found a bug, have an idea, or want to help test? Come talk to us on <a href={site.links.discord}>Discord</a>.</p>
+	<Panel title="Around the Tower">
+		<div class="store-grid">
+			{stores.map((s) => (
+				<div class="store">
+					<img src={`/img/gmt/stores/${s.logo}.png`} alt="" loading="lazy" />
+					<span>{s.text}</span>
+				</div>
+			))}
 		</div>
-	</div>
+	</Panel>
+
+	<Panel title="GMC">
+		<p>GMC is the tower's currency. Earn it by playing gamemodes, winning events and unlocking achievements, then spend it on furniture, hats, pets, particles and more.</p>
+	</Panel>
+
+	<Panel title="Our Goal">
+		<p>GMod Tower meant a lot to a lot of people. We want to keep that experience alive, fix what's broken, and build it back up with the community.</p>
+		<p>The original GMod Tower and all of its artwork were created by <a href="https://www.pixeltailgames.com/">PixelTail Games</a>, who went on to make <a href="https://store.steampowered.com/app/394690/Tower_Unite/">Tower Unite</a>. Go check it out.</p>
+		<p>Found a bug, have an idea, or want to help test? Come talk to us on <a href={site.links.discord}>Discord</a>.</p>
+	</Panel>
 </Base>

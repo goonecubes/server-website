@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Panel from "../components/Panel.astro";
 
 // SAMPLE DATA. These will come from the game database (read-only) once the API exists.
 const richest = [
@@ -19,23 +20,18 @@ const tables = [
 ];
 ---
 <Base title="Stats">
-	<div class="post">
-		<h2 class="section-title">Tower Stats</h2>
-		<div class="box">
-			<div class="notice">These are sample numbers. Live stats will show up here once the servers are online.</div>
-			{tables.map((t) => (
-				<>
-					<h3>{t.title}</h3>
-					<table class="list">
-						<thead><tr><th>#</th><th>Player</th><th style="text-align:right">{t.col}</th></tr></thead>
-						<tbody>
-							{t.rows.map(([name, v], i) => (
-								<tr><td>{i + 1}</td><td>{name}</td><td class="num">{fmt(v)}</td></tr>
-							))}
-						</tbody>
-					</table>
-				</>
-			))}
-		</div>
-	</div>
+	<h1 class="page-heading">Tower Stats</h1>
+	<p class="note">&#9654; These are sample numbers. Live stats will show up here once the servers are online.</p>
+	{tables.map((t) => (
+		<Panel title={t.title}>
+			<table class="list">
+				<thead><tr><th>#</th><th>Player</th><th style="text-align:right">{t.col}</th></tr></thead>
+				<tbody>
+					{t.rows.map(([name, v], i) => (
+						<tr><td>{i + 1}</td><td>{name}</td><td class="num">{fmt(v)}</td></tr>
+					))}
+				</tbody>
+			</table>
+		</Panel>
+	))}
 </Base>

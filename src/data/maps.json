@@ -1,0 +1,338 @@
+{
+	"ballrace": [
+		{
+			"id": "gmt_ballracer_skyworld01",
+			"name": "Sky World",
+			"image": "/img/gmt/maps/gmt_ballracer_skyworld.jpg"
+		},
+		{
+			"id": "gmt_ballracer_grassworld01",
+			"name": "Grass World",
+			"image": "/img/gmt/maps/gmt_ballracer_grassworld.jpg"
+		},
+		{
+			"id": "gmt_ballracer_paradise03",
+			"name": "Paradise",
+			"image": "/img/gmt/maps/gmt_ballracer_paradise.jpg"
+		},
+		{
+			"id": "gmt_ballracer_iceworld03",
+			"name": "Ice World",
+			"image": "/img/gmt/maps/gmt_ballracer_iceworld.jpg"
+		},
+		{
+			"id": "gmt_ballracer_khromidro02",
+			"name": "Khromidro",
+			"image": "/img/gmt/maps/gmt_ballracer_khromidro.jpg"
+		},
+		{
+			"id": "gmt_ballracer_sandworld02",
+			"name": "Sand World",
+			"image": "/img/gmt/maps/gmt_ballracer_sandworld.jpg"
+		},
+		{
+			"id": "gmt_ballracer_memories02",
+			"name": "Memories",
+			"image": "/img/gmt/maps/gmt_ballracer_memories.jpg"
+		},
+		{
+			"id": "gmt_ballracer_midori02",
+			"name": "Midori",
+			"image": "/img/gmt/maps/gmt_ballracer_midori.jpg"
+		},
+		{
+			"id": "gmt_ballracer_waterworld02",
+			"name": "Water World",
+			"image": "/img/gmt/maps/gmt_ballracer_waterworld.jpg"
+		},
+		{
+			"id": "gmt_ballracer_neonlights01",
+			"name": "Neon Lights",
+			"image": "/img/gmt/maps/gmt_ballracer_neonlights.jpg"
+		},
+		{
+			"id": "gmt_ballracer_nightball",
+			"name": "Night World",
+			"image": "/img/gmt/maps/gmt_ballracer_nightball.jpg"
+		},
+		{
+			"id": "gmt_ballracer_metalworld",
+			"name": "Metal World",
+			"image": "/img/gmt/maps/gmt_ballracer_metalworld.jpg"
+		},
+		{
+			"id": "gmt_ballracer_spaceworld01",
+			"name": "Space World",
+			"image": "/img/gmt/maps/gmt_ballracer_spaceworld.jpg"
+		},
+		{
+			"id": "gmt_ballracer_tranquil01",
+			"name": "Tranquil",
+			"image": "/img/gmt/maps/gmt_ballracer_tranquil.jpg"
+		},
+		{
+			"id": "gmt_ballracer_facile02",
+			"name": "Facile",
+			"image": "/img/gmt/maps/gmt_ballracer_facile.jpg"
+		}
+	],
+	"gourmetrace": [
+		{
+			"id": "gmt_gr_nile",
+			"name": "The Nile",
+			"image": "/img/gmt/maps/gmt_gr_nile.jpg"
+		},
+		{
+			"id": "gmt_gr_ruins",
+			"name": "Ruins",
+			"image": "/img/gmt/maps/gmt_gr_ruins.jpg"
+		}
+	],
+	"minigolf": [
+		{
+			"id": "gmt_minigolf_sandbar06",
+			"name": "Sand Bar",
+			"image": "/img/gmt/maps/gmt_minigolf_sandbar.jpg"
+		},
+		{
+			"id": "gmt_minigolf_waterhole04",
+			"name": "Waterhole",
+			"image": "/img/gmt/maps/gmt_minigolf_waterhole.jpg"
+		},
+		{
+			"id": "gmt_minigolf_garden05",
+			"name": "Karafuru Gardens",
+			"image": "/img/gmt/maps/gmt_minigolf_garden.jpg"
+		},
+		{
+			"id": "gmt_minigolf_moon01",
+			"name": "Moon",
+			"image": "/img/gmt/maps/gmt_minigolf_moon.jpg"
+		},
+		{
+			"id": "gmt_minigolf_snowfall01",
+			"name": "Snow Fall",
+			"image": "/img/gmt/maps/gmt_minigolf_snowfall.jpg"
+		},
+		{
+			"id": "gmt_minigolf_forest04",
+			"name": "Forest",
+			"image": "/img/gmt/maps/gmt_minigolf_forest.jpg"
+		},
+		{
+			"id": "gmt_minigolf_desert02",
+			"name": "Desert",
+			"image": "/img/gmt/maps/gmt_minigolf_desert.jpg"
+		}
+	],
+	"pvpbattle": [
+		{
+			"id": "gmt_pvp_construction01",
+			"name": "Construction Zone",
+			"image": "/img/gmt/maps/gmt_pvp_construction.jpg"
+		},
+		{
+			"id": "gmt_pvp_frostbite01",
+			"name": "Frost Bite",
+			"image": "/img/gmt/maps/gmt_pvp_frostbite.jpg"
+		},
+		{
+			"id": "gmt_pvp_meadow01",
+			"name": "Meadows",
+			"image": "/img/gmt/maps/gmt_pvp_meadow.jpg"
+		},
+		{
+			"id": "gmt_pvp_oneslip01",
+			"name": "OneSlip",
+			"image": "/img/gmt/maps/gmt_pvp_oneslip.jpg"
+		},
+		{
+			"id": "gmt_pvp_pit02",
+			"name": "The Pit",
+			"image": "/img/gmt/maps/gmt_pvp_pit.jpg"
+		},
+		{
+			"id": "gmt_pvp_containership02",
+			"name": "Container Ship",
+			"image": "/img/gmt/maps/gmt_pvp_containership.jpg"
+		},
+		{
+			"id": "gmt_pvp_colony01",
+			"name": "Colony",
+			"image": "/img/gmt/maps/gmt_pvp_colony.jpg"
+		},
+		{
+			"id": "gmt_pvp_subway01",
+			"name": "Subway",
+			"image": "/img/gmt/maps/gmt_pvp_subway.jpg"
+		},
+		{
+			"id": "gmt_pvp_shard01",
+			"name": "Shard",
+			"image": "/img/gmt/maps/gmt_pvp_shard01.jpg"
+		},
+		{
+			"id": "gmt_pvp_aether",
+			"name": "Aether",
+			"image": "/img/gmt/maps/gmt_pvp_aether.jpg"
+		},
+		{
+			"id": "gmt_pvp_mars",
+			"name": "Mars",
+			"image": "/img/gmt/maps/gmt_pvp_mars.jpg"
+		},
+		{
+			"id": "gmt_pvp_neo",
+			"name": "Neo",
+			"image": "/img/gmt/maps/gmt_pvp_neo.jpg"
+		}
+	],
+	"sourcekarts": [
+		{
+			"id": "gmt_sk_lifelessraceway01",
+			"name": "Lifeless Raceway",
+			"image": "/img/gmt/maps/gmt_sk_lifelessraceway.jpg"
+		},
+		{
+			"id": "gmt_sk_island02",
+			"name": "Drift Island",
+			"image": "/img/gmt/maps/gmt_sk_island.jpg"
+		}
+	],
+	"ultimatechimerahunt": [
+		{
+			"id": "gmt_uch_tazmily01",
+			"name": "Tazmily Village",
+			"image": "/img/gmt/maps/gmt_uch_tazmily.jpg"
+		},
+		{
+			"id": "gmt_uch_clubtitiboo01",
+			"name": "Club Titiboo",
+			"image": "/img/gmt/maps/gmt_uch_clubtitiboo.jpg"
+		},
+		{
+			"id": "gmt_uch_shadyoaks03",
+			"name": "Shady Oaks",
+			"image": "/img/gmt/maps/gmt_uch_shadyoaks.jpg"
+		},
+		{
+			"id": "gmt_uch_laboratory01",
+			"name": "Laboratory",
+			"image": "/img/gmt/maps/gmt_uch_laboratory.jpg"
+		},
+		{
+			"id": "gmt_uch_camping01",
+			"name": "Camping Grounds",
+			"image": "/img/gmt/maps/gmt_uch_camping.jpg"
+		},
+		{
+			"id": "gmt_uch_headquarters03",
+			"name": "Headquarters",
+			"image": "/img/gmt/maps/gmt_uch_headquarters.jpg"
+		},
+		{
+			"id": "gmt_uch_downtown04",
+			"name": "Downtown",
+			"image": "/img/gmt/maps/gmt_uch_downtown.jpg"
+		},
+		{
+			"id": "gmt_uch_mrsaturnvalley02",
+			"name": "Mr. Saturn Valley",
+			"image": "/img/gmt/maps/gmt_uch_mrsaturnvalley.jpg"
+		},
+		{
+			"id": "gmt_uch_woodland03",
+			"name": "Woodlands",
+			"image": "/img/gmt/maps/gmt_uch_woodland.jpg"
+		},
+		{
+			"id": "gmt_uch_falloff01",
+			"name": "Fall Off",
+			"image": "/img/gmt/maps/gmt_uch_falloff.jpg"
+		},
+		{
+			"id": "gmt_uch_snowedin01",
+			"name": "Snowed In",
+			"image": "/img/gmt/maps/gmt_uch_snowedin.jpg"
+		}
+	],
+	"virus": [
+		{
+			"id": "gmt_virus_facility202",
+			"name": "Facility 2",
+			"image": "/img/gmt/maps/gmt_virus_facility2.jpg"
+		},
+		{
+			"id": "gmt_virus_riposte01",
+			"name": "Riposte",
+			"image": "/img/gmt/maps/gmt_virus_riposte.jpg"
+		},
+		{
+			"id": "gmt_virus_aztec01",
+			"name": "Aztec",
+			"image": "/img/gmt/maps/gmt_virus_aztec.jpg"
+		},
+		{
+			"id": "gmt_virus_sewage01",
+			"name": "Sewage",
+			"image": "/img/gmt/maps/gmt_virus_sewage.jpg"
+		},
+		{
+			"id": "gmt_virus_dust03",
+			"name": "Dust",
+			"image": "/img/gmt/maps/gmt_virus_dust.jpg"
+		},
+		{
+			"id": "gmt_virus_metaldream05",
+			"name": "Metal Dreams",
+			"image": "/img/gmt/maps/gmt_virus_metaldream.jpg"
+		},
+		{
+			"id": "gmt_virus_hospital204",
+			"name": "Hospital",
+			"image": "/img/gmt/maps/gmt_virus_hospital2.jpg"
+		},
+		{
+			"id": "gmt_virus_derelict01",
+			"name": "Derelict Station",
+			"image": "/img/gmt/maps/gmt_virus_derelict.jpg"
+		}
+	],
+	"zombiemassacre": [
+		{
+			"id": "gmt_zm_arena_underpass02",
+			"name": "Underpass",
+			"image": "/img/gmt/maps/gmt_zm_arena_underpass.jpg"
+		},
+		{
+			"id": "gmt_zm_arena_thedocks01",
+			"name": "The Docks",
+			"image": "/img/gmt/maps/gmt_zm_arena_thedocks.jpg"
+		},
+		{
+			"id": "gmt_zm_arena_gasoline01",
+			"name": "Gasoline",
+			"image": "/img/gmt/maps/gmt_zm_arena_gasoline.jpg"
+		},
+		{
+			"id": "gmt_zm_arena_scrap01",
+			"name": "Scrap",
+			"image": "/img/gmt/maps/gmt_zm_arena_scrap.jpg"
+		},
+		{
+			"id": "gmt_zm_arena_acrophobia01",
+			"name": "Acrophobia",
+			"image": "/img/gmt/maps/gmt_zm_arena_acrophobia.jpg"
+		},
+		{
+			"id": "gmt_zm_arena_trainyard01",
+			"name": "Trainyard",
+			"image": "/img/gmt/maps/gmt_zm_arena_trainyard.jpg"
+		},
+		{
+			"id": "gmt_zm_arena_foundation03",
+			"name": "Foundation",
+			"image": "/img/gmt/maps/gmt_zm_arena_foundation.jpg"
+		}
+	]
+}

@@ -1,25 +1,46 @@
 ---
 import Base from "../layouts/Base.astro";
-import PostDate from "../components/PostDate.astro";
+import Panel from "../components/Panel.astro";
 
 const time = (v) => new Date(v).getTime();
-
 const posts = Object.values(import.meta.glob("../content/news/*.md", { eager: true }))
 	.sort((a, b) => time(b.frontmatter.date) - time(a.frontmatter.date));
+const formatDate = (v) => new Date(v).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+
+const highlights = [
+	{ title: "The Condos", text: "Your own suite to decorate and show off.", image: "/img/gmt/shots/condo3.jpg", href: "/about" },
+	{ title: "Ball Race", text: "Roll through obstacle courses and grab bananas.", image: "/img/gmt/maps/gmt_ballracer_skyworld.jpg", href: "/gamemodes#ballrace" },
+	{ title: "PVP Battle", text: "Ridiculous weapons, short explosive matches.", image: "/img/gmt/shots/pvp3.jpg", href: "/gamemodes#pvpbattle" },
+	{ title: "Ultimate Chimera Hunt", text: "Press the button. Don't get eaten.", image: "/img/gmt/maps/gmt_uch_clubtitiboo.jpg", href: "/gamemodes#uch" },
+	{ title: "Minigolf", text: "Wacky courses, from the desert to the moon.", image: "/img/gmt/maps/gmt_minigolf_moon.jpg", href: "/gamemodes#minigolf" },
+	{ title: "Virus", text: "Survive the infection until the timer runs out.", image: "/img/gmt/maps/gmt_virus_hospital2.jpg", href: "/gamemodes#virus" },
+];
 ---
-<Base title="News">
-	{posts.map(({ frontmatter, Content }) => (
-		<div class="post">
-			<div class="post-head">
-				<h2 class="post-title">{frontmatter.title}</h2>
-				<PostDate date={frontmatter.date} />
-			</div>
-			<div class="box">
-				<Content />
-			</div>
-			<div class="post-meta">
-				<span>posted by: <b>{frontmatter.author}</b></span>
-			</div>
+<Base title="Home">
+	<Panel title="Welcome to Skyline Tower!">
+		<p><b>Skyline Tower</b> is a community rehost of the classic GMod Tower experience. Hang out in the lobby, decorate your condo, hit the arcade and casino, and jump into minigames with friends, just like old times.</p>
+		<p>New here? Grab the server IP from the Server Status box, <a href="/downloads">subscribe to our content</a>, hop in and say hi. We don't bite (mostly).</p>
+	</Panel>
+
+	<Panel title="Latest News">
+		{posts.map(({ frontmatter, Content }) => (
+			<article class="news-item">
+				<h3 class="news-headline">{frontmatter.title}</h3>
+				<p class="news-meta">Posted by <b>{frontmatter.author}</b> on {formatDate(frontmatter.date)}</p>
+				<div class="news-body"><Content /></div>
+			</article>
+		))}
+	</Panel>
+
+	<Panel title="What's in the Tower?">
+		<div class="tower-grid">
+			{highlights.map((h) => (
+				<a class="tower-card" href={h.href}>
+					<img src={h.image} alt="" loading="lazy" />
+					<b>{h.title}</b>
+					<span>{h.text}</span>
+				</a>
+			))}
 		</div>
-	))}
+	</Panel>
 </Base>

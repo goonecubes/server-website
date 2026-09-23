@@ -1,26 +1,25 @@
 ---
 const { gm } = Astro.props;
-const mapLabel = gm.maps.length === 1 ? "1 Map" : `${gm.maps.length} Maps`;
+const mapLabel = gm.maps.length === 1 ? "1 map" : `${gm.maps.length} maps`;
 ---
 <details class="gm" id={gm.id}>
 	<summary>
-		{gm.image ? (
-			<div class="banner banner-image" style={`background-image:url(${gm.image})`} role="img" aria-label={gm.name}></div>
+		{gm.banner ? (
+			<img class="gm-banner" src={gm.banner} alt={gm.name} loading="lazy" />
 		) : (
-			<div class="banner" style={`background:${gm.bg}`}>
-				<div class="banner-art" style={`background:${gm.art}`}></div>
-				<span class="banner-name" style={`font-family:${gm.font};${gm.nameStyle}`}>{gm.name}</span>
-			</div>
+			<div class={`gm-banner gm-banner-${gm.id}`} role="img" aria-label={gm.name}>{gm.name}</div>
 		)}
 	</summary>
 	<div class="gm-info">
-		<div class="gm-stats">
-			<span>{gm.players}</span>
-			<span>{mapLabel}</span>
-		</div>
+		<div class="gm-stats">{gm.players} &middot; {mapLabel}</div>
 		<p>{gm.desc}</p>
-		<ul class="gm-maps">
-			{gm.maps.map((m) => <li>{m}</li>)}
-		</ul>
+		<div class="map-grid">
+			{gm.maps.map((m) => (
+				<figure>
+					{m.image && <img src={m.image} alt="" loading="lazy" />}
+					<figcaption>{m.name}</figcaption>
+				</figure>
+			))}
+		</div>
 	</div>
 </details>

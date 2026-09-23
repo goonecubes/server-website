@@ -1,31 +1,34 @@
 ---
 import Base from "../layouts/Base.astro";
+import Panel from "../components/Panel.astro";
 import { site } from "../site.js";
 ---
 <Base title="Downloads">
-	<div class="post">
-		<h2 class="section-title">Downloads</h2>
-		<div class="box">
-			<p>Skyline Tower needs some extra content (maps, models, sounds and textures) to look right. It's all on the Steam Workshop, so there's nothing to install by hand.</p>
-
-			<h3>Step 1: Subscribe to the collection</h3>
-			<p>Open our Workshop collection and click <b>Subscribe to all</b>. Steam downloads everything and keeps it up to date for you.</p>
-			<p class="center"><a class="btn btn-blue" href={site.links.workshop}>Workshop Collection</a></p>
-
-			<h3>Step 2: Mount Counter-Strike: Source (recommended)</h3>
-			<p>Some maps and props use CS:S content. If you own it, mount it from the Garry's Mod main menu (the controller icon at the bottom right). Without it, you'll see some pink-and-black checkerboards.</p>
-
-			<h3>Step 3: Join!</h3>
-			<p>Click <b>Connect to Skyline</b> at the top of any page, or open your console in Garry's Mod and type:</p>
-			<p class="center"><code>connect {site.servers[0].address}</code></p>
-
-			<h3>Why Workshop?</h3>
-			<ul>
-				<li>It's quick, compressed, and needs no extra programs.</li>
-				<li>Updates download automatically.</li>
-				<li>It's tied to your Steam account, so it comes back if you reinstall.</li>
-				<li>It works on Windows, macOS and Linux.</li>
-			</ul>
-		</div>
+	<h1 class="page-heading">Download Center</h1>
+	<div class="callout">
+		<b>Everything you need is on the Steam Workshop.</b> No installers, no content packs to unzip, no toolbars. Ever.
 	</div>
+
+	<Panel title="Step 1: Subscribe to the Workshop collection">
+		<p>Skyline Tower needs extra content (maps, models, sounds and textures) to look right. Open our Workshop collection and click <b>Subscribe to all</b>. Steam downloads everything and keeps it up to date for you.</p>
+		<p class="center"><a class="btn btn-green" href={site.links.workshop}>Download</a></p>
+	</Panel>
+
+	<Panel title="Step 2: Mount Counter-Strike: Source (recommended)">
+		<p>Some maps and props use CS:S content. If you own it, mount it from the Garry's Mod main menu (the controller icon at the bottom right). Without it, you'll see some pink-and-black checkerboards.</p>
+	</Panel>
+
+	<Panel title="Step 3: Join!">
+		<p>Hit <b>Connect Now!</b> in the Server Status box, or open your console in Garry's Mod and type:</p>
+		<p class="center"><code>connect {site.servers[0].address}</code></p>
+	</Panel>
+
+	<Panel title="Why Workshop?">
+		<ul>
+			<li>It's quick, compressed, and needs no extra programs.</li>
+			<li>Updates download automatically.</li>
+			<li>It's tied to your Steam account, so it comes back if you reinstall.</li>
+			<li>It works on Windows, macOS and Linux.</li>
+		</ul>
+	</Panel>
 </Base>

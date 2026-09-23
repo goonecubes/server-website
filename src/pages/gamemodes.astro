@@ -1,26 +1,29 @@
 ---
 import Base from "../layouts/Base.astro";
+import Panel from "../components/Panel.astro";
 import Gamemode from "../components/Gamemode.astro";
 import { released, inProduction } from "../data/gamemodes.js";
 ---
 <Base title="Gamemodes">
-	<div class="post">
-		<h2 class="section-title">Released</h2>
-		<p class="section-sub">Every gamemode that's live and ready to play. Click a banner to read more about it.</p>
-		<div class="box">
-			<div class="gm-list">
-				{released.map((gm) => <Gamemode gm={gm} />)}
-			</div>
-		</div>
-	</div>
+	<h1 class="page-heading">Gamemodes</h1>
 
-	<div class="post">
-		<h2 class="section-title">In Production</h2>
-		<p class="section-sub">Gamemodes we're still restoring and polishing. They may show up for testing before their full release.</p>
-		<div class="box">
-			<div class="gm-list">
-				{inProduction.map((gm) => <Gamemode gm={gm} />)}
-			</div>
+	<Panel title="Released">
+		<p class="note">&#9654; Every gamemode that's live and ready to play. Click a banner to read more and see its maps.</p>
+		<div class="gm-list">
+			{released.map((gm) => <Gamemode gm={gm} />)}
 		</div>
-	</div>
+	</Panel>
+
+	<Panel title="In Production">
+		<p class="note">&#9654; Gamemodes we're still restoring and polishing. They may show up for testing before their full release.</p>
+		<div class="gm-list">
+			{inProduction.map((gm) => <Gamemode gm={gm} />)}
+		</div>
+	</Panel>
+
+	<script is:inline>
+		// Open the gamemode named in the URL (e.g. from the Featured Game box).
+		var target = location.hash && document.querySelector("details" + location.hash);
+		if (target) target.open = true;
+	</script>
 </Base>
