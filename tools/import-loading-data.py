@@ -1,0 +1,126 @@
+"""Build the in-game loading screen's data and images.
+
+Run from the Website folder:  python tools/import-loading-data.py
+Requires Pillow. Safe to re-run; outputs are overwritten.
+
+Sources
+- ../loading3/info/<map>.txt        map name, author, description (one per line)
+- ../loading3/maps/<map>.jpg        map screenshots
+- ../loading3/logos/*.png           gamemode logos (lobby_logo.png is the full Lobby banner)
+- gamemode GMode.Tips in the game code
+
+Outputs (plain files, so the old in-game browser can load them without a build step)
+- public/loading/maps/<map>.jpg     resized screenshots
+- public/loading/logos/*.png
+- public/loading/data.js            var LOADING_DATA = {...}
+"""
+import json, re, shutil
+from pathlib import Path
+from PIL import Image
+
+WEBSITE = Path(__file__).resolve().parent.parent
+ROOT = WEBSITE.parent
+OLD = ROOT / "loading3"
+TIPS_DIR = ROOT / "Gmod Server Files" / "garrysmod" / "addons" / "VibeTower_Code" / "gamemodes" / "gmodtower" / "gamemode" / "base" / "multiserver" / "gamemodes"
+OUT = WEBSITE / "public" / "loading"
+
+# Map-name prefix -> gamemode. Checked in order; the first match wins.
+GAMEMODES = [
+	("gmt_ballracer_", "ballrace", "Ball Race", "ballrace_logo.png", "ballrace.lua"),
+	("gmt_pvp_", "pvpbattle", "PVP Battle", "pvpbattle_logo.png", "pvpbattle.lua"),
+	("gmt_uch_", "ultimatechimerahunt", "Ultimate Chimera Hunt", "uch_logo.png", "ultimatechimerahunt.lua"),
+	("gmt_virus_", "virus", "Virus", "virus_logo.png", "virus.lua"),
+	("gmt_zm_", "zombiemassacre", "Zombie Massacre", "zombiemassacre_logo.png", "zombiemassacre.lua"),
+	("gmt_sk_", "sourcekarts", "Source Karts", "sk_logo.png", "sourcekarts.lua"),
+	("gmt_minigolf_", "minigolf", "Minigolf", "minigolf_logo.png", "minigolf.lua"),
+	("gmt_gr_", "gourmetrace", "Gourmet Race", "gourmet_logo.png", "gourmetrace.lua"),
+	("gmt_mono_", "monotone", "Monotone", "monotone_logo.png", None),
+	("gmt_", "gmtlobby", "Lobby", "lobby_logo.png", None),  # lobbies and anything else GMT
+]
+
+# The lobby has no GMode.Tips of its own.
+LOBBY_TIPS = [
+	"Remember to always brush your teeth!",
+	"Check into a condo at the Tower Condos. Anything you place in it is saved for next time.",
+	"Lobby events start every 15 to 25 minutes. Keep an eye on the HUD for the next one.",
+	"Hold Tab and open Settings to change your HUD style, graphics options and media volume.",
+	"Walk into a game portal to queue up for a gamemode with other players.",
+	"The merchant wanders the lobby with rare items. He moves every 15 minutes.",
+	"Lost? The map boards around the lobby show where everything is.",
+	"Found a bug? Report it on our Discord instead of exploiting it.",
+]
+
+# Current Lobby 2 builds share the r3 description; there is no r10 screenshot in loading3.
+ALIASES = {
+	"gmt_lobby2": {"from": "gmt_lobby2_r3", "name": "Lobby 2", "image": "lobby2.jpg"},
+}
+
+
+def read_info(path):
+	lines = [l.strip() for l in path.read_text(encoding="utf-8", errors="replace").splitlines()]
+	lines += [""] * 3
+	return {"name": lines[0], "author": lines[1], "desc": " ".join(l for l in lines[2:] if l)}
+
+
+def read_tips(lua_file):
+	text = lua_file.read_text(encoding="utf-8", errors="replace")
+	m = re.search(r"GMode\.Tips\s*=\s*\{(.*?)\n\}", text, re.S)
+	if not m:
+		return []
+	return [t.replace('\\"', '"') for t in re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(1))]
+
+
+def save_jpg(src, dst, width=1280):
+	img = Image.open(src).convert("RGB")
+	if img.width > width:
+		img = img.resize((width, round(img.height * width / img.width)), Image.LANCZOS)
+	img.save(dst, quality=82, optimize=True, progressive=True)
+
+
+def main():
+	(OUT / "maps").mkdir(parents=True, exist_ok=True)
+	(OUT / "logos").mkdir(parents=True, exist_ok=True)
+
+	maps = {}
+	for info in sorted((OLD / "info").glob("*.txt")):
+		entry = read_info(info)
+		shot = OLD / "maps" / f"{info.stem}.jpg"
+		if shot.exists():
+			save_jpg(shot, OUT / "maps" / shot.name)
+			entry["image"] = f"maps/{shot.name}"
+		maps[info.stem] = entry
+
+	lobby2_shot = WEBSITE / "public" / "img" / "gmt" / "shots" / "condo1.jpg"
+	for key, alias in ALIASES.items():
+		entry = dict(maps[alias["from"]])
+		entry["name"] = alias["name"]
+		shutil.copyfile(lobby2_shot, OUT / "maps" / alias["image"])
+		entry["image"] = f"maps/{alias['image']}"
+		maps[key] = entry
+
+	shutil.copyfile(OLD / "maps" / "nouser.jpg", OUT / "nouser.jpg")
+	for f in (OLD / "logos").glob("*.png"):
+		shutil.copyfile(f, OUT / "logos" / f.name)
+	badge = ROOT / "lobby_badge.png"
+	if badge.exists():
+		shutil.copyfile(badge, OUT / "badge.png")
+
+	gamemodes = []
+	for prefix, gid, name, logo, lua in GAMEMODES:
+		tips = read_tips(TIPS_DIR / lua) if lua else []
+		if gid == "gmtlobby":
+			tips = LOBBY_TIPS
+		gamemodes.append({"prefix": prefix, "id": gid, "name": name, "logo": f"logos/{logo}", "banner": logo == "lobby_logo.png", "tips": tips})
+
+	data = {"maps": maps, "gamemodes": gamemodes}
+	js = "// Generated by tools/import-loading-data.py. Do not edit by hand.\nvar LOADING_DATA = " + json.dumps(data, indent="\t", ensure_ascii=False) + ";\n"
+	(OUT / "data.js").write_text(js, encoding="utf-8")
+
+	no_image = [k for k, v in maps.items() if "image" not in v]
+	print(f"{len(maps)} maps, {sum(len(g['tips']) for g in gamemodes)} tips, {len(gamemodes)} gamemodes")
+	if no_image:
+		print("maps without a screenshot:", ", ".join(no_image))
+
+
+if __name__ == "__main__":
+	main()

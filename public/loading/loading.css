@@ -1,0 +1,224 @@
+/* Recreation of the 2010 GMod Tower loading screen.
+   Everything on #stage is laid out on the original 921x612 canvas; loading.js scales it to fit.
+   Old-WebKit friendly: absolute positioning, -webkit- prefixes, no flexbox/grid/variables. */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #000;
+	color: #fff;
+	font-family: Verdana, Geneva, sans-serif;
+	cursor: default;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#bg {
+	position: absolute;
+	top: -2%;
+	left: -2%;
+	width: 104%;
+	height: 104%;
+	background: #111 center center no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+#shade {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.55);
+}
+
+/* full-width bars; loading.js lines them up with the stage */
+.band { position: absolute; left: 0; width: 100%; }
+#topbar { background: rgba(0, 0, 0, 0.82); }
+#bottombar { background: rgba(0, 0, 0, 0.6); }
+
+#stage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 921px;
+	height: 612px;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+#stage div, #stage img { position: absolute; }
+
+/* ---------- text styles ---------- */
+
+.outlined {
+	-webkit-text-stroke: 0.7px #fff;
+	text-shadow:
+		-1px -1px 0 #06121a, 1px -1px 0 #06121a,
+		-1px 1px 0 #06121a, 1px 1px 0 #06121a,
+		2px 2px 0 #2f7fb0;
+}
+
+/* ---------- top bar ---------- */
+
+#nowloading {
+	top: 4px;
+	left: 280px;
+	width: 361px;
+	text-align: center;
+	font-size: 17px;
+	font-weight: bold;
+	-webkit-text-stroke: 0;
+}
+#status {
+	top: 29px;
+	left: 280px;
+	width: 361px;
+	text-align: center;
+	font-size: 11px;
+	color: #9fd4ff;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#progress {
+	top: 48px;
+	left: 360px;
+	width: 200px;
+	height: 6px;
+	background: rgba(255, 255, 255, 0.12);
+	border: 1px solid #3a7ea8;
+	border-radius: 3px;
+	overflow: hidden;
+}
+#progress-fill {
+	top: 0;
+	left: 0;
+	height: 6px;
+	width: 0;
+	background: #5ab0e8;
+	background: -webkit-linear-gradient(top, #9fd9ff, #2a8ff0);
+	background: linear-gradient(to bottom, #9fd9ff, #2a8ff0);
+	-webkit-transition: width 0.3s;
+	transition: width 0.3s;
+}
+
+#watermark {
+	top: 22px;
+	right: 90px;
+	font: 44px Tahoma, Verdana, sans-serif;
+	color: rgba(255, 255, 255, 0.16);
+	white-space: nowrap;
+}
+
+/* Lobby uses its full banner image. Other gamemodes get a matching bar with their logo on it. */
+#banner-bar {
+	display: none;
+	top: 35px;
+	left: 4px;
+	width: 300px;
+	height: 66px;
+	border-radius: 33px 0 0 33px;
+	background: #1a5fc9;
+	background: -webkit-linear-gradient(left, #0a3d8f, #1a5fc9 45%, rgba(20, 70, 170, 0));
+	background: linear-gradient(to right, #0a3d8f, #1a5fc9 45%, rgba(20, 70, 170, 0));
+}
+#banner { top: 9px; left: 4px; }
+body.logo-mode #banner-bar { display: block; }
+body.logo-mode #banner { max-width: 270px; max-height: 104px; }
+
+#badge { top: -14px; left: 819px; width: 114px; height: 114px; }
+
+/* ---------- map info ---------- */
+
+#preview {
+	top: 120px;
+	left: 96px;
+	width: 300px;
+	height: 300px;
+	border: 1px solid #3aa0e8;
+	background: #0a1a26 center center no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+#info { top: 122px; left: 405px; width: 440px; }
+#info div { position: static; }
+#title {
+	font-size: 28px;
+	letter-spacing: 0.4px;
+	line-height: 36px;
+	border-bottom: 1px solid #3aa0e8;
+	padding-bottom: 2px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#author { font-size: 11px; color: #9fd4ff; margin: 3px 0 2px; }
+#desc { font-size: 14px; line-height: 22px; letter-spacing: 0.1px; }
+
+#hint {
+	top: 429px;
+	left: 92px;
+	width: 740px;
+	height: 26px;
+	line-height: 24px;
+	text-align: center;
+	font-size: 14px;
+	background: rgba(20, 70, 100, 0.8);
+	border: 1px solid #3a7ea8;
+	border-radius: 3px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#hint-text { -webkit-transition: opacity 0.4s; transition: opacity 0.4s; }
+
+/* ---------- player card ---------- */
+
+#card {
+	display: none;
+	top: 478px;
+	left: 2px;
+	width: 288px;
+	height: 134px;
+	background: rgba(10, 40, 60, 0.9);
+	border: 1px solid #3a7ea8;
+	border-radius: 3px;
+}
+body.has-player #card { display: block; }
+#avatar {
+	top: 6px;
+	left: 4px;
+	width: 120px;
+	height: 120px;
+	border: 2px solid #5ab0e8;
+	background: #1c2c1c url(nouser.jpg) center center no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+#who { top: 6px; left: 134px; width: 148px; }
+#who div { position: static; }
+#name {
+	font-size: 22px;
+	line-height: 28px;
+	letter-spacing: 0.3px;
+	border-bottom: 1px solid #5ab0e8;
+	margin-bottom: 4px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#name.vip { color: #ffd24a; }
+#stats { font-size: 12px; line-height: 17px; }
+#stats .gap { height: 9px; }
+
+#clock {
+	top: 562px;
+	left: 0;
+	width: 921px;
+	text-align: center;
+	font-size: 36px;
+	letter-spacing: 1px;
+}

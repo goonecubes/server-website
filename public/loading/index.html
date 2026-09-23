@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+	GMod Tower loading screen.
+
+	Point the server at it (server.cfg):
+		sv_loadingurl "https://<your-site>/loading/?map=%m&steamid=%s"
+
+	Garry's Mod fills in %m (map) and %s (SteamID64) and then calls GameDetails(),
+	SetFilesTotal(), SetFilesNeeded(), DownloadingFile() and SetStatusChanged() as it loads.
+
+	Preview in a normal browser:  /loading/?demo  (add &map=gmt_virus_dust03 to try other maps)
+
+	This page is written in plain ES5 and old-style CSS on purpose: the main branch of
+	Garry's Mod renders loading screens with Awesomium, an old WebKit.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GMod Tower - Now Loading</title>
+<link rel="stylesheet" href="loading.css">
+</head>
+<body>
+<div id="bg"></div>
+<div id="shade"></div>
+<div id="topbar" class="band"></div>
+<div id="bottombar" class="band"></div>
+
+<div id="stage">
+	<div id="nowloading" class="outlined">NOW LOADING...</div>
+	<div id="status">Starting up...</div>
+	<div id="progress"><div id="progress-fill"></div></div>
+
+	<div id="watermark">GMod Tower</div>
+	<div id="banner-bar"></div>
+	<img id="banner" src="logos/lobby_logo.png" alt="">
+	<img id="badge" src="badge.png" alt="">
+
+	<div id="preview"></div>
+	<div id="info">
+		<div id="title" class="outlined">Loading...</div>
+		<div id="author"></div>
+		<div id="desc"></div>
+	</div>
+
+	<div id="hint"><b>Hint:</b> <span id="hint-text"></span></div>
+
+	<div id="card">
+		<div id="avatar"></div>
+		<div id="who">
+			<div id="name" class="outlined"></div>
+			<div id="stats"></div>
+		</div>
+	</div>
+
+	<div id="clock" class="outlined"></div>
+</div>
+
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="loading.js"></script>
+</body>
+</html>
