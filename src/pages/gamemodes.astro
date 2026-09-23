@@ -4,7 +4,7 @@ import Panel from "../components/Panel.astro";
 import Gamemode from "../components/Gamemode.astro";
 import { released, inProduction } from "../data/gamemodes.js";
 ---
-<Base title="Gamemodes">
+<Base title="Gamemodes" description="Every gamemode on Skyline Tower: Ball Race, Virus, PVP Battle, Ultimate Chimera Hunt, Zombie Massacre, Minigolf and more.">
 	<h1 class="page-heading">Gamemodes</h1>
 
 	<Panel title="Released">
@@ -22,8 +22,13 @@ import { released, inProduction } from "../data/gamemodes.js";
 	</Panel>
 
 	<script is:inline>
-		// Open the gamemode named in the URL (e.g. from the Featured Game box).
-		var target = location.hash && document.querySelector("details" + location.hash);
-		if (target) target.open = true;
+		// Open the gamemode named in the URL (e.g. from the Featured Game box), including
+		// when that link is clicked while already on this page.
+		function openFromHash() {
+			var target = location.hash && document.querySelector("details" + location.hash);
+			if (target) target.open = true;
+		}
+		openFromHash();
+		window.addEventListener("hashchange", openFromHash);
 	</script>
 </Base>

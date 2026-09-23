@@ -19,16 +19,16 @@ const tables = [
 	{ title: "Most Achievements", col: "Achievements", rows: achievements },
 ];
 ---
-<Base title="Stats">
+<Base title="Stats" description="Skyline Tower leaderboards: richest players, Blockles high scores and most achievements.">
 	<h1 class="page-heading">Tower Stats</h1>
 	<p class="note">&#9654; These are sample numbers. Live stats will show up here once the servers are online.</p>
 	{tables.map((t) => (
 		<Panel title={t.title}>
 			<table class="list">
-				<thead><tr><th>#</th><th>Player</th><th style="text-align:right">{t.col}</th></tr></thead>
+				<thead><tr><th class="rank">#</th><th>Player</th><th class="num">{t.col}</th></tr></thead>
 				<tbody>
 					{t.rows.map(([name, v], i) => (
-						<tr><td>{i + 1}</td><td>{name}</td><td class="num">{fmt(v)}</td></tr>
+						<tr><td class="rank">{i + 1}</td><td>{name}</td><td class="num">{fmt(v)}</td></tr>
 					))}
 				</tbody>
 			</table>

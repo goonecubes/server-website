@@ -9,7 +9,7 @@ const entries = Object.keys(changelog)
 	.sort((a, b) => Number(a) - Number(b))
 	.map((k) => ({ title: changelog[k][0], items: changelog[k].slice(1) }));
 ---
-<Base title="Changelog">
+<Base title="Changelog" description="What's new on Skyline Tower.">
 	<h1 class="page-heading">Changelog</h1>
 	<div class="callout"><b>Latest update:</b> {changelog.date} &middot; This is the same changelog shown on the big screen in the Transit Station.</div>
 

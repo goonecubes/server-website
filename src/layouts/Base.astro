@@ -3,7 +3,9 @@ import "../styles/global.css";
 import { site } from "../site.js";
 import { released, inProduction } from "../data/gamemodes.js";
 
-const { title } = Astro.props;
+const { title, description = `${site.name} is a community rehost of GMod Tower for Garry's Mod: condos, stores, events and classic gamemodes.` } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ticker = site.ticker.join("  ***  ");
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isActive = (href) => (href === "/" ? path === "/" : path.startsWith(href));
 
@@ -19,13 +21,20 @@ const server = site.servers[0];
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="color-scheme" content="light dark" />
 	<title>{site.name} :: {title}</title>
+	<meta name="description" content={description} />
+	<meta property="og:site_name" content={site.name} />
+	<meta property="og:title" content={`${site.name} :: ${title}`} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content={new URL("/img/gmt/shots/condo1.jpg", Astro.site)} />
+	<meta property="og:url" content={canonical} />
+	<meta name="theme-color" content="#1c3b95" />
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lilita+One&display=swap" rel="stylesheet" />
 </head>
 <body>
-	<div id="page">
+	<div id="page"><span id="top"></span>
 		<header id="masthead">
 			<a href="/" class="masthead-link">
 				<img src="/logo-icon.svg" width="72" height="72" alt="" class="masthead-icon" />
@@ -46,8 +55,8 @@ const server = site.servers[0];
 
 		<div id="ticker" aria-label="News ticker">
 			<div class="ticker-track">
-				<span>{site.ticker.map((t) => `*** ${t} ***`).join("   ")}</span>
-				<span aria-hidden="true">{site.ticker.map((t) => `*** ${t} ***`).join("   ")}</span>
+				<span>***  {ticker}  ***</span>
+				<span aria-hidden="true">***  {ticker}  ***</span>
 			</div>
 		</div>
 

@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro";
+import Panel from "../components/Panel.astro";
+---
+<Base title="Page Not Found">
+	<h1 class="page-heading">Out of Bounds!</h1>
+	<Panel title="404: this room doesn't exist">
+		<div class="lost">
+			<img src="/img/gmt/maps/gmt_ballracer_skyworld.jpg" alt="" />
+			<div>
+				<p class="lost-code">404</p>
+				<p>You've rolled right off the edge of the map. The page you're looking for was moved, deleted, or never existed in the first place.</p>
+				<p><a href="/">&laquo; Take the elevator back to the lobby</a></p>
+			</div>
+		</div>
+	</Panel>
+</Base>

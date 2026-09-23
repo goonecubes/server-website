@@ -4,18 +4,18 @@ import Panel from "../components/Panel.astro";
 import { site } from "../site.js";
 
 const stores = [
-	{ logo: "towercondos", text: "Rent a condo and make it yours." },
-	{ logo: "sweetsuite", text: "Furniture for every room of your condo." },
-	{ logo: "towercasino", text: "Slots, poker, duels and prize wheels." },
-	{ logo: "toweroutfitters", text: "Player models, hats and accessories." },
-	{ logo: "centralcircuit", text: "Electronics and appliances." },
-	{ logo: "songbirds", text: "Instruments and everything musical." },
-	{ logo: "thetoystop2", text: "Toys, games and silly gadgets." },
-	{ logo: "basical", text: "Everyday odds and ends." },
-	{ logo: "smoothiebar", text: "Grab a drink by the pool." },
+	{ logo: "towercondos", name: "Tower Condos", text: "Rent a condo and make it yours." },
+	{ logo: "sweetsuite", name: "Sweet Suite Furnishings", text: "Furniture for every room of your condo." },
+	{ logo: "towercasino", name: "Tower Casino", text: "Slots, poker, duels and prize wheels." },
+	{ logo: "toweroutfitters", name: "Tower Outfitters", text: "Player models, hats and accessories." },
+	{ logo: "centralcircuit", name: "Central Circuit", text: "Electronics and appliances." },
+	{ logo: "songbirds", name: "Songbirds", text: "Instruments and everything musical." },
+	{ logo: "thetoystop2", name: "The Toy Stop", text: "Toys, games and silly gadgets." },
+	{ logo: "basical", name: "Basical's Goods", text: "Everyday odds and ends." },
+	{ logo: "smoothiebar", name: "Smoothie Bar", text: "Grab a drink by the pool." },
 ];
 ---
-<Base title="About">
+<Base title="About" description="What Skyline Tower is, the stores and places around the tower, and where it came from.">
 	<h1 class="page-heading">About Skyline Tower</h1>
 
 	<Panel title="What is this place?">
@@ -27,7 +27,7 @@ const stores = [
 		<div class="store-grid">
 			{stores.map((s) => (
 				<div class="store">
-					<img src={`/img/gmt/stores/${s.logo}.png`} alt="" loading="lazy" />
+					<span class="store-logo"><img src={`/img/gmt/stores/${s.logo}.png`} alt={s.name} loading="lazy" /></span>
 					<span>{s.text}</span>
 				</div>
 			))}

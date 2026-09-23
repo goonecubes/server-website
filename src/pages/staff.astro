@@ -16,7 +16,7 @@ const staff = [
 	<Panel title="Who keeps the tower running">
 		<p>If you need help in-game, look for the staff tag in chat or ask on <a href={site.links.discord}>Discord</a>.</p>
 		<table class="list">
-			<thead><tr><th>Rank</th><th>Members</th></tr></thead>
+			<thead><tr><th style="width:35%">Rank</th><th>Members</th></tr></thead>
 			<tbody>
 				{staff.map((s) => <tr><td><b>{s.rank}</b></td><td>{s.members.join(", ")}</td></tr>)}
 			</tbody>

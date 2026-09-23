@@ -35,6 +35,8 @@
 	--note-bg: #eef7e6;
 	--note-border: #7fb56a;
 	--note-text: #2d5a1f;
+	--flag: #a35c00;
+	--focus: #f0a400;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -72,6 +74,8 @@
 		--note-bg: #0f2418;
 		--note-border: #3c7a4c;
 		--note-text: #9fe3a8;
+		--flag: #ffb347;
+		--focus: #ffd24a;
 	}
 }
 
@@ -89,6 +93,7 @@ body {
 
 a { color: var(--link); }
 a:hover { color: var(--link-hover); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 img { max-width: 100%; }
 
 code {
@@ -186,7 +191,7 @@ code {
 	display: inline-flex;
 	animation: ticker 60s linear infinite;
 }
-.ticker-track span { padding-right: 60px; }
+.ticker-track span { padding-right: 60px; white-space: pre; }
 #ticker:hover .ticker-track { animation-play-state: paused; }
 @keyframes ticker { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
@@ -231,7 +236,7 @@ code {
 }
 .status dt { font-weight: bold; }
 .status dd { margin: 0; text-align: right; font-family: "Courier New", monospace; }
-.status-flag { color: #d98a00; font-weight: bold; }
+.status-flag { color: var(--flag); font-weight: bold; }
 
 .ip-box {
 	font: 11px "Courier New", monospace;
@@ -437,9 +442,10 @@ code {
 }
 .map-grid figure { margin: 0; text-align: center; font-size: 10.5px; }
 .map-grid img {
+	/* previews are 4:3 shots padded to a square; crop the padding off */
 	display: block;
 	width: 100%;
-	aspect-ratio: 1;
+	aspect-ratio: 4 / 3;
 	object-fit: cover;
 	border: 1px solid #000;
 }
@@ -456,14 +462,22 @@ code {
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	gap: 6px;
-	padding: 10px;
-	background: #3a3f55;
+	gap: 8px;
+	padding: 12px 10px 10px;
+	background: linear-gradient(#454b66, #2f3448);
 	border: 1px solid #000;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 	color: #e8ebf7;
 	font-size: 11px;
 }
-.store img { max-height: 70px; object-fit: contain; }
+.store-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 80px;
+}
+.store-logo img { max-width: 100%; max-height: 80px; object-fit: contain; }
 
 /* ---------- Tables ---------- */
 
@@ -482,12 +496,32 @@ table.list th {
 }
 table.list td { padding: 4px 8px; border-top: 1px solid var(--panel-border); }
 table.list tr:nth-child(even) td { background: var(--row-alt); }
-table.list td.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.list .num { text-align: right; font-variant-numeric: tabular-nums; }
+table.list .rank { width: 36px; text-align: center; font-weight: bold; }
 
 /* ---------- Changelog ---------- */
 
 .changelog-entry ul { margin: 2px 0 0; padding-left: 20px; }
 .changelog-entry li { margin: 1px 0; }
+
+/* ---------- FAQ ---------- */
+
+.faq-index { margin: 0; padding-left: 24px; }
+.faq-index li { padding: 1px 0; }
+.faq { padding: 10px 0; scroll-margin-top: 10px; }
+.faq + .faq { border-top: 1px dashed var(--rule); }
+.faq:first-child { padding-top: 0; }
+.faq p { margin: 0 0 4px; }
+.faq-q { font-weight: bold; }
+.faq-q > span, .faq-a > span:first-child { font: 700 13px "Arvo", Georgia, serif; color: var(--headline); margin-right: 4px; }
+.faq-top { font-size: 10.5px; }
+.faq:target { background: var(--row-alt); outline: 1px dashed var(--rule); outline-offset: 4px; }
+
+/* ---------- 404 ---------- */
+
+.lost { display: flex; gap: 16px; align-items: center; }
+.lost img { flex: 0 0 200px; width: 200px; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid #000; }
+.lost-code { font: 700 44px/1 "Arvo", Georgia, serif; color: var(--headline); margin: 0 0 6px; }
 
 /* ---------- Footer ---------- */
 
@@ -538,4 +572,5 @@ table.list td.num { text-align: right; font-variant-numeric: tabular-nums; }
 	#menu li + li { border-left: 0; }
 	#columns { flex-direction: column; padding: 10px; }
 	#sidebar { order: 0; flex: none; width: 100%; }
+	.lost { flex-direction: column; text-align: center; }
 }
