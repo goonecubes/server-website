@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import Gamemode from "../components/Gamemode.astro";
+import { released, inProduction } from "../data/gamemodes.js";
+---
+<Base title="Gamemodes">
+	<div class="post">
+		<h2 class="section-title">Released</h2>
+		<p class="section-sub">Every gamemode that's live and ready to play. Click a banner to read more about it.</p>
+		<div class="box">
+			<div class="gm-list">
+				{released.map((gm) => <Gamemode gm={gm} />)}
+			</div>
+		</div>
+	</div>
+
+	<div class="post">
+		<h2 class="section-title">In Production</h2>
+		<p class="section-sub">Gamemodes we're still restoring and polishing. They may show up for testing before their full release.</p>
+		<div class="box">
+			<div class="gm-list">
+				{inProduction.map((gm) => <Gamemode gm={gm} />)}
+			</div>
+		</div>
+	</div>
+</Base>

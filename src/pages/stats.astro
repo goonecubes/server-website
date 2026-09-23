@@ -1,0 +1,41 @@
+---
+import Base from "../layouts/Base.astro";
+
+// SAMPLE DATA. These will come from the game database (read-only) once the API exists.
+const richest = [
+	["Player One", 1482300], ["Player Two", 977150], ["Player Three", 812400], ["Player Four", 640925], ["Player Five", 505000],
+];
+const blockles = [
+	["Player Three", 184220], ["Player One", 150870], ["Player Six", 97310], ["Player Two", 88450], ["Player Seven", 61200],
+];
+const achievements = [
+	["Player Two", 142], ["Player One", 131], ["Player Five", 118], ["Player Four", 97], ["Player Eight", 90],
+];
+const fmt = (n) => n.toLocaleString("en-US");
+const tables = [
+	{ title: "Richest Players", col: "GMC", rows: richest },
+	{ title: "Blockles High Scores", col: "Score", rows: blockles },
+	{ title: "Most Achievements", col: "Achievements", rows: achievements },
+];
+---
+<Base title="Stats">
+	<div class="post">
+		<h2 class="section-title">Tower Stats</h2>
+		<div class="box">
+			<div class="notice">These are sample numbers. Live stats will show up here once the servers are online.</div>
+			{tables.map((t) => (
+				<>
+					<h3>{t.title}</h3>
+					<table class="list">
+						<thead><tr><th>#</th><th>Player</th><th style="text-align:right">{t.col}</th></tr></thead>
+						<tbody>
+							{t.rows.map(([name, v], i) => (
+								<tr><td>{i + 1}</td><td>{name}</td><td class="num">{fmt(v)}</td></tr>
+							))}
+						</tbody>
+					</table>
+				</>
+			))}
+		</div>
+	</div>
+</Base>

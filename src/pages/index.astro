@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import PostDate from "../components/PostDate.astro";
+
+const time = (v) => new Date(v).getTime();
+
+const posts = Object.values(import.meta.glob("../content/news/*.md", { eager: true }))
+	.sort((a, b) => time(b.frontmatter.date) - time(a.frontmatter.date));
+---
+<Base title="News">
+	{posts.map(({ frontmatter, Content }) => (
+		<div class="post">
+			<div class="post-head">
+				<h2 class="post-title">{frontmatter.title}</h2>
+				<PostDate date={frontmatter.date} />
+			</div>
+			<div class="box">
+				<Content />
+			</div>
+			<div class="post-meta">
+				<span>posted by: <b>{frontmatter.author}</b></span>
+			</div>
+		</div>
+	))}
+</Base>

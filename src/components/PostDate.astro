@@ -1,0 +1,11 @@
+---
+const { date } = Astro.props;
+// YAML dates arrive as Date objects; plain YYYY-MM-DD strings are pinned to midday UTC.
+const d = typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date) ? new Date(date + "T12:00:00Z") : new Date(date);
+const month = d.toLocaleString("en-US", { month: "short", timeZone: "UTC" });
+const day = String(d.getUTCDate()).padStart(2, "0");
+---
+<span class="post-date">
+	<svg viewBox="0 0 14 14" aria-hidden="true"><rect x="0.5" y="1.5" width="13" height="12" rx="2" fill="#fff" stroke="#b33"/><rect x="0.5" y="1.5" width="13" height="4" rx="2" fill="#d33"/><path d="M4 0v3M10 0v3" stroke="#555" stroke-width="1.5"/></svg>
+	<span>{month} <b>{day}</b>{`, ${d.getUTCFullYear()}`}</span>
+</span>

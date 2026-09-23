@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../site.js";
+
+const faqs = [
+	["How do I join?", `Subscribe to the <a href="${site.links.workshop}">Workshop collection</a>, then click <b>Connect to Skyline</b> at the top of the page. See <a href="/downloads">Downloads</a> for step-by-step instructions.`],
+	["Everything is pink and black / there are giant ERROR signs!", `You're missing content. Make sure you're subscribed to the entire Workshop collection and that Steam has finished downloading it. Mounting Counter-Strike: Source fixes the rest.`],
+	["How do I get a condo?", `Head up to the Tower Condos and talk to the receptionist. Your condo is yours until you leave the condo area or go AFK for too long, and anything you place is saved for next time.`],
+	["How do I earn GMC?", `Play gamemodes, join lobby events, finish achievements and play at the arcade. Most activities in the tower pay out something.`],
+	["How do I play a gamemode?", `Walk into one of the game portals in the lobby to join its queue. When enough players are ready, everyone is sent to the game server together and brought back to the lobby afterward.`],
+	["Is my progress saved?", `Yes. Your GMC, inventory, condo layout, achievements and stats are saved to your Steam account on our servers.`],
+	["My game is lagging. What can I do?", `Open the Settings tab on the scoreboard (hold Tab) and look under Graphics. Enabling optimizations and turning off dynamic trees both help a lot on older PCs.`],
+	["I found a bug or exploit!", `Please report it on <a href="${site.links.discord}">Discord</a> instead of using it. Abusing exploits can get your account reset or banned; reporting them earns you our gratitude.`],
+	["Is this affiliated with PixelTail Games or Tower Unite?", `No. Skyline Tower is an unofficial, community-run server. The original GMod Tower was made by PixelTail Games.`],
+];
+---
+<Base title="FAQs">
+	<div class="post">
+		<h2 class="section-title">Frequently Asked Questions</h2>
+		<div class="box">
+			{faqs.map(([q, a]) => (
+				<>
+					<h3>{q}</h3>
+					<p set:html={a} />
+				</>
+			))}
+		</div>
+	</div>
+</Base>

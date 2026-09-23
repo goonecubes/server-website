@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import changelog from "../../public/changelog.json";
+
+// Same file the in-game Transit Station wall reads: numbered keys, each [title, ...items].
+const entries = Object.keys(changelog)
+	.filter((k) => /^\d+$/.test(k))
+	.sort((a, b) => Number(a) - Number(b))
+	.map((k) => ({ title: changelog[k][0], items: changelog[k].slice(1) }));
+---
+<Base title="Changelog">
+	<div class="post">
+		<div class="post-head">
+			<h2 class="post-title">Latest Update</h2>
+			<span class="post-date">{changelog.date}</span>
+		</div>
+		<div class="box">
+			{entries.map((e) => (
+				<div class="changelog-entry">
+					<h3>{e.title}</h3>
+					<ul>{e.items.map((i) => <li>{i}</li>)}</ul>
+				</div>
+			))}
+		</div>
+		<div class="post-meta">
+			<span>This is the same changelog shown on the big screen in the Transit Station.</span>
+		</div>
+	</div>
+</Base>

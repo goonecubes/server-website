@@ -1,0 +1,26 @@
+---
+const { gm } = Astro.props;
+const mapLabel = gm.maps.length === 1 ? "1 Map" : `${gm.maps.length} Maps`;
+---
+<details class="gm" id={gm.id}>
+	<summary>
+		{gm.image ? (
+			<div class="banner banner-image" style={`background-image:url(${gm.image})`} role="img" aria-label={gm.name}></div>
+		) : (
+			<div class="banner" style={`background:${gm.bg}`}>
+				<div class="banner-art" style={`background:${gm.art}`}></div>
+				<span class="banner-name" style={`font-family:${gm.font};${gm.nameStyle}`}>{gm.name}</span>
+			</div>
+		)}
+	</summary>
+	<div class="gm-info">
+		<div class="gm-stats">
+			<span>{gm.players}</span>
+			<span>{mapLabel}</span>
+		</div>
+		<p>{gm.desc}</p>
+		<ul class="gm-maps">
+			{gm.maps.map((m) => <li>{m}</li>)}
+		</ul>
+	</div>
+</details>

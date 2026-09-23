@@ -1,0 +1,87 @@
+---
+import "../styles/global.css";
+import { site } from "../site.js";
+
+const { title } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href) => (href === "/" ? path === "/" : path.startsWith(href));
+---
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{site.name} :: {title}</title>
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Cabin+Condensed&family=Yanone+Kaffeesatz:wght@400;600&family=Lilita+One&family=Fredoka:wght@600&family=Creepster&family=Bangers&family=Luckiest+Guy&family=Racing+Sans+One&display=swap" rel="stylesheet" />
+</head>
+<body>
+	<div id="connect-panel" hidden>
+		<div class="inner connect-inner">
+			<p>Make sure you're subscribed to our <a href={site.links.workshop}>Workshop collection</a> before joining, or you'll see missing textures.</p>
+			<div class="connect-buttons">
+				{site.servers.map((s) => (
+					<div class="connect-server">
+						<a class="btn btn-green" href={`steam://connect/${s.address}`}>Join {s.name}</a>
+						<span class="ip">{s.name} IP: <code>{s.address}</code></span>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+
+	<div id="header">
+		<svg class="header-skyline" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+			<path d="M0 60V44h40v-8h22v12h30V30h18v-10h8v10h18v28h26V38h34v-14h20v14h16v22h30V26h12V12h6v14h12v34h40V40h28v-8h36v28h24V20h20v-6h10v6h20v46h30V36h22v-10h26v34h40V30h16V8h8V2h4v6h8v22h16v30h30V42h44v-18h20v36h26V34h14v-8h28v34h38V24h24v36h34V40h30v-10h22v30h40V28h18V16h10v12h18v32h30V44h36v-14h26v30h40V36h28v24h44V48h36V60z" />
+		</svg>
+		<div class="inner">
+			<a class="logo" href="/">
+				<img src="/logo-icon.svg" width="58" height="58" alt="" />
+				<span class="logo-text">
+					<span class="logo-name">Skyline<b>Tower</b></span>
+					<span class="logo-tagline">{site.tagline}</span>
+				</span>
+			</a>
+
+			<div class="toptabs">
+				<a href="#" id="toggle-connect">Connect to Skyline</a>
+				<a href="/profile">My Profile</a>
+				<a href={site.links.discord}>Discord</a>
+			</div>
+
+			<div class="social">
+				<a href={site.links.steamGroup} title="Steam Group" class="soc soc-steam"><svg viewBox="0 0 24 24"><circle cx="15" cy="9" r="4.2" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8" cy="16" r="2.6" fill="#fff"/><path d="M10 14.5l2.8-2.2" stroke="#fff" stroke-width="2"/></svg></a>
+				<a href={site.links.youtube} title="YouTube" class="soc soc-yt"><svg viewBox="0 0 24 24"><path d="M9 7l8 5-8 5z" fill="#fff"/></svg></a>
+				<a href={site.links.discord} title="Discord" class="soc soc-discord"><svg viewBox="0 0 24 24"><path d="M6 7.5c2-1.3 4-1.7 6-1.7s4 .4 6 1.7c1.2 2.2 1.8 4.6 1.6 7.6-1.5 1.2-3 1.9-4.4 2.2l-.9-1.5c-1.5.4-3.1.4-4.6 0l-.9 1.5c-1.4-.3-2.9-1-4.4-2.2-.2-3 .4-5.4 1.6-7.6z" fill="#fff"/><circle cx="9.5" cy="12" r="1.3" fill="#5865f2"/><circle cx="14.5" cy="12" r="1.3" fill="#5865f2"/></svg></a>
+			</div>
+
+			<ul class="navbar">
+				{site.nav.map((item) => (
+					<li><a href={item.href} class={!item.external && isActive(item.href) ? "active" : ""}>{item.label}</a></li>
+				))}
+			</ul>
+		</div>
+	</div>
+
+	<div id="container">
+		<slot />
+	</div>
+
+	<div id="footer">
+		<p>&copy; 2026 {site.name}. Not affiliated with PixelTail Games or Facepunch Studios. All trademarks are property of their respective owners.</p>
+		<p>{site.name} is a community-run GMod Tower server for <a href="https://gmod.facepunch.com/">Garry's Mod</a>, built upon the Valve Source&trade; engine.</p>
+		<p class="footer-credit">Proudly carrying on the legacy of <a href="https://www.pixeltailgames.com/">GMod Tower</a>.</p>
+	</div>
+
+	<script is:inline>
+		document.getElementById("toggle-connect").addEventListener("click", function (e) {
+			e.preventDefault();
+			var panel = document.getElementById("connect-panel");
+			panel.hidden = !panel.hidden;
+			this.classList.toggle("open", !panel.hidden);
+		});
+	</script>
+</body>
+</html>
