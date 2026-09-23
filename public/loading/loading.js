@@ -133,7 +133,7 @@
 			tips[j] = t;
 		}
 		tipIndex = 0;
-		setText($("hint-text"), tips[0]);
+		setText($("hint-tip"), tips[0]);
 		if (tipTimer) clearInterval(tipTimer);
 		tipTimer = setInterval(nextTip, config.hintInterval || 8000);
 	}
@@ -143,7 +143,7 @@
 		tipIndex = (tipIndex + 1) % tips.length;
 		el.style.opacity = "0";
 		setTimeout(function () {
-			setText(el, tips[tipIndex]);
+			setText($("hint-tip"), tips[tipIndex]);
 			el.style.opacity = "1";
 		}, 400);
 	}
@@ -187,6 +187,7 @@
 			gap.className = "gap";
 			stats.appendChild(gap);
 			var b = document.createElement("b");
+			b.className = "label-line";
 			setText(b, "Last Join");
 			stats.appendChild(b);
 			var when = document.createElement("div");

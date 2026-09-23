@@ -165,7 +165,7 @@ body.logo-mode #banner { max-width: 270px; max-height: 104px; }
 	height: 26px;
 	line-height: 24px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 13px;
 	background: rgba(20, 70, 100, 0.8);
 	border: 1px solid #3a7ea8;
 	border-radius: 3px;
@@ -180,42 +180,50 @@ body.logo-mode #banner { max-width: 270px; max-height: 104px; }
 #card {
 	display: none;
 	top: 478px;
-	left: 2px;
-	width: 288px;
-	height: 134px;
-	background: rgba(10, 40, 60, 0.9);
-	border: 1px solid #3a7ea8;
-	border-radius: 3px;
+	left: -1px;
+	width: 289px;
+	height: 140px;
+	background: #0a3447;
+	border: 1px solid #1c678a;
+	border-radius: 4px;
 }
 body.has-player #card { display: block; }
-#avatar {
-	top: 6px;
+#avatar-frame {
+	top: 5px;
 	left: 4px;
+	width: 126px;
+	height: 126px;
+	background: #62a7e3;
+	border-radius: 4px;
+}
+#avatar {
+	top: 3px;
+	left: 3px;
 	width: 120px;
 	height: 120px;
-	border: 2px solid #5ab0e8;
 	background: #1c2c1c url(nouser.jpg) center center no-repeat;
 	-webkit-background-size: cover;
 	background-size: cover;
 }
-#who { top: 6px; left: 134px; width: 148px; }
+#who { top: 4px; left: 138px; width: 126px; }
 #who div { position: static; }
 #name {
-	font-size: 22px;
+	font-size: 21px;
 	line-height: 28px;
 	letter-spacing: 0.3px;
-	border-bottom: 1px solid #5ab0e8;
+	border-bottom: 1px solid #c9d1d6;
 	margin-bottom: 4px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 #name.vip { color: #ffd24a; }
-#stats { font-size: 12px; line-height: 17px; }
-#stats .gap { height: 9px; }
+#stats { font-size: 11px; line-height: 17px; white-space: nowrap; }
+#stats .gap { height: 19px; }
+#stats .label-line { display: block; border-bottom: 1px solid #c9d1d6; margin-bottom: 2px; }
 
 #clock {
-	top: 562px;
+	top: 572px;
 	left: 0;
 	width: 921px;
 	text-align: center;
