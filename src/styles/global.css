@@ -1,92 +1,57 @@
 /* Skyline Tower: a stereotypical late-2000s fan site. Framed fixed-width page, left sidebar,
-   title-bar panels, news ticker, 88x31 badges. Follows the system light/dark setting. */
+   title-bar panels, news ticker, 88x31 badges. Dark theme only. */
 
 :root {
-	--page-bg: #7f97c6;
-	--page-pattern: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0 6px, transparent 6px 12px);
-	--frame: #1c3b95;
-	--main-bg: #fbf6e7;
-	--panel-bg: #fffdf6;
-	--panel-border: #d3c294;
-	--title-from: #3169e0;
-	--title-to: #1a3ea4;
+	color-scheme: dark;
+	--page-bg: #070b1d;
+	--page-pattern: repeating-linear-gradient(135deg, rgba(120, 140, 255, 0.06) 0 6px, transparent 6px 12px);
+	--frame: #3b4a92;
+	--main-bg: #0e1434;
+	--panel-bg: #0a0f2a;
+	--panel-border: #303e86;
+	--title-from: #3f4fbd;
+	--title-to: #232d7c;
 	--title-text: #ffffff;
-	--nav-from: #3b6fe3;
-	--nav-to: #1b40a8;
-	--nav-text: #ffffff;
-	--nav-hover: rgba(255, 255, 255, 0.16);
-	--nav-active: #f6c945;
-	--nav-active-text: #1a2a5e;
-	--nav-edge: #0f2a78;
-	--ticker-bg: #1b1408;
-	--ticker-text: #8dff6a;
-	--text: #2b2518;
-	--muted: #75694f;
-	--link: #1b4fc4;
-	--link-hover: #b3261e;
-	--headline: #9b1c1c;
-	--rule: #cdbb8a;
-	--input-bg: #ffffff;
-	--code-bg: #f3ecd6;
-	--masthead-shade: linear-gradient(90deg, rgba(10, 30, 90, 0.72), rgba(10, 30, 90, 0.25) 60%, rgba(10, 30, 90, 0.05));
-	--row-alt: #f5eedb;
-	--counter-bg: #111;
+	--nav-from: #e3e7f1;
+	--nav-to: #a8b0c9;
+	--nav-text: #1b2152;
+	--nav-hover: rgba(255, 255, 255, 0.5);
+	--nav-active: #ffd24a;
+	--nav-active-text: #1b2152;
+	--nav-edge: #6c7596;
+	--ticker-bg: #050817;
+	--ticker-text: #ffd84a;
+	--text: #d9def6;
+	--muted: #8e98c6;
+	--link: #86b6ff;
+	--link-hover: #ffd24a;
+	--headline: #ffcc4d;
+	--rule: #2c3978;
+	--input-bg: #070b1f;
+	--code-bg: #070b1f;
+	--masthead-shade: linear-gradient(90deg, rgba(4, 8, 30, 0.85), rgba(4, 8, 30, 0.45) 60%, rgba(4, 8, 30, 0.2));
+	--row-alt: #111a42;
+	--counter-bg: #000;
 	--counter-text: #7dff5a;
-	--note-bg: #eef7e6;
-	--note-border: #7fb56a;
-	--note-text: #2d5a1f;
-	--flag: #a35c00;
-	--focus: #f0a400;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--page-bg: #070b1d;
-		--page-pattern: radial-gradient(rgba(120, 140, 255, 0.12) 1px, transparent 1.5px) 0 0 / 14px 14px;
-		--frame: #3b4a92;
-		--main-bg: #0e1434;
-		--panel-bg: #0a0f2a;
-		--panel-border: #303e86;
-		--title-from: #3f4fbd;
-		--title-to: #232d7c;
-		--title-text: #ffffff;
-		--nav-from: #e3e7f1;
-		--nav-to: #a8b0c9;
-		--nav-text: #1b2152;
-		--nav-hover: rgba(255, 255, 255, 0.5);
-		--nav-active: #ffd24a;
-		--nav-active-text: #1b2152;
-		--nav-edge: #6c7596;
-		--ticker-bg: #050817;
-		--ticker-text: #ffd84a;
-		--text: #d9def6;
-		--muted: #8e98c6;
-		--link: #86b6ff;
-		--link-hover: #ffd24a;
-		--headline: #ffcc4d;
-		--rule: #2c3978;
-		--input-bg: #070b1f;
-		--code-bg: #070b1f;
-		--masthead-shade: linear-gradient(90deg, rgba(4, 8, 30, 0.85), rgba(4, 8, 30, 0.45) 60%, rgba(4, 8, 30, 0.2));
-		--row-alt: #111a42;
-		--counter-bg: #000;
-		--counter-text: #7dff5a;
-		--note-bg: #0f2418;
-		--note-border: #3c7a4c;
-		--note-text: #9fe3a8;
-		--flag: #ffb347;
-		--focus: #ffd24a;
-	}
+	--note-bg: #0f2418;
+	--note-border: #3c7a4c;
+	--note-text: #9fe3a8;
+	--flag: #ffb347;
+	--focus: #ffd24a;
 }
 
 * { box-sizing: border-box; }
 
-html { background: var(--page-bg); }
+/* The background lives on <html> so it covers the whole window, even when a page is
+   shorter than the screen (the body only extends as far as its content). */
+html {
+	min-height: 100%;
+	background: var(--page-pattern), var(--page-bg);
+}
 
 body {
 	margin: 0;
 	padding: 16px 12px 24px;
-	background: var(--page-pattern), var(--page-bg);
 	color: var(--text);
 	font: 12px/1.6 Verdana, Tahoma, Geneva, sans-serif;
 }
