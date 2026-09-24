@@ -1,41 +1,37 @@
-html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; }
-body { font: 12px Verdana, Geneva, sans-serif; color: #e6eef6; }
-#sheet {
-	position: absolute; left: 0; top: 0; right: 0; bottom: 0;
-	background: rgba(6, 26, 40, 0.9);
-	border: 1px solid #62a7e3;
-	border-radius: 6px;
+/* Recreates GMod Tower's piano.php sheet music page. */
+html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+body {
+	background: #000 url('oldpaper.jpg') no-repeat;
+	background-size: 100% 100%;
+	color: #fff;
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	text-shadow: 1px 1px 2px #000;
+	-webkit-user-select: none;
+	user-select: none;
 }
-#top {
-	position: absolute; left: 0; right: 0; top: 0; height: 30px;
-	background: #0a3447; border-bottom: 1px solid #1c678a;
-	border-radius: 6px 6px 0 0; text-align: center;
+.music {
+	position: absolute; top: 0; left: 1px;
+	width: 99%; padding: 2px;
+	text-align: center; font-weight: bold; font-size: 12px;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
 }
-#top a {
-	position: absolute; top: 3px; width: 24px; height: 22px; line-height: 20px;
-	color: #fff; text-decoration: none; font-size: 20px; font-weight: bold;
-	background: #1c678a; border-radius: 3px;
+h2 { margin: 0; font-size: 18px; background-color: rgba(216, 203, 165, 0.5); }
+.notes {
+	font-family: Verdana, Geneva, sans-serif;
+	background-color: rgba(0, 0, 0, 0.2);
+	margin-top: 2px; padding-bottom: 2px;
+	white-space: pre-line;
 }
-#prev { left: 6px; }
-#next { right: 6px; }
-#top a:hover { background: #62a7e3; }
-#song {
-	margin-top: 4px; width: 70%; height: 22px;
-	font: bold 12px Verdana, Geneva, sans-serif;
-	background: #06202f; color: #fff; border: 1px solid #1c678a;
+.mode { position: absolute; top: 0; right: 0; padding: 6px; font-weight: bold; font-size: 14px; }
+.key {
+	position: absolute; bottom: 0; left: 0; width: 100%; padding: 2px 0;
+	text-align: center; font-family: Verdana, Geneva, sans-serif; font-size: 10px;
+	background-color: #d8cba5; color: #000; text-shadow: none;
 }
-#keys {
-	position: absolute; left: 0; right: 0; top: 31px; bottom: 20px;
-	overflow: auto; padding: 6px 10px;
-	font: bold 17px/28px "Courier New", Courier, monospace;
-	word-spacing: 2px;
+.back, .next {
+	position: absolute; bottom: 1px; padding: 2px 6px;
+	font-family: Verdana, Geneva, sans-serif; font-weight: bold; font-size: 10px;
+	color: #000; text-shadow: none;
 }
-#keys .line { white-space: normal; }
-#keys .k { display: inline-block; min-width: 14px; text-align: center; color: #fff; }
-#keys .k.black { color: #f4c542; }
-#keys .gap { display: inline-block; width: 16px; }
-#foot {
-	position: absolute; left: 0; right: 0; bottom: 0; height: 19px; line-height: 19px;
-	text-align: center; font-size: 10px; color: #8fb6cc;
-	border-top: 1px solid #1c678a;
-}
+.back { left: 0; }
+.next { right: 0; padding-right: 10px; }

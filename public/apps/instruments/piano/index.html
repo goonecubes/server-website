@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <!--
-	Piano sheet music, shown above the piano when a player presses Space.
-	The game opens it at 450x250 (basic keys) or 600x250 with ?adv=1 (advanced keys).
+	Piano sheet music, shown above the Lobby piano when a player presses Space.
+	The game opens it at 450x250 (basic keys) or 600x250 with ?adv=1 (advanced keys), and its
+	arrow keys call pageBack() / pageForward(). Songs live in songs.json, written as the keys
+	to press, the same way GMod Tower's original piano.php did it. ?type=N opens song N.
 	Plain ES5 and old CSS: it may run in Garry's Mod's old Awesomium browser.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
-<title>Sheet Music</title>
+<title>GMT Piano</title>
 <link rel="stylesheet" href="piano.css">
 </head>
 <body>
-<div id="sheet">
-	<div id="top">
-		<a id="prev" href="#" title="Previous song">&lsaquo;</a>
-		<select id="song"></select>
-		<a id="next" href="#" title="Next song">&rsaquo;</a>
-	</div>
-	<div id="keys"></div>
-	<div id="foot"></div>
+<div class="music">
+	<h2 id="title">&nbsp;</h2>
+	<div class="notes" id="notes"></div>
 </div>
-<script src="songs.js"></script>
+<div class="mode" id="mode"></div>
+<div class="key" id="key">&nbsp;</div>
+<div class="back">[Left]</div>
+<div class="next">[Right]</div>
 <script src="piano.js"></script>
 </body>
 </html>

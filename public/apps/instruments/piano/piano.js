@@ -1,124 +1,62 @@
-/* Piano sheet music: turns the note names in songs.js into the keys of the Lobby piano.
-   Key layout from gmt_piano/shared.lua. Plain ES5. */
+/* Piano sheet music: shows one song from songs.json at a time. Plain ES5. */
 (function () {
 	"use strict";
 
-	var songs = window.PIANO_SONGS || [];
-	var advanced = /[?&]adv=1/.test(window.location.search);
+	var mode = /[?&]adv=1/.test(window.location.search) ? "advanced" : "basic";
+	var songs = [], index = 0;
+	var STORE = "pianoSong_" + mode;
 
 	function $(id) { return document.getElementById(id); }
 
-	// Note number -> key label. MIDI numbering: C4 (middle C) = 60.
-	// Advanced mode: 25 white keys from C2 (1 2 3 ... g), black keys with Shift.
-	// Basic mode: the white keys A..' start at middle C, black keys W E T Y U O P.
-	var WHITE_STEPS = [0, 2, 4, 5, 7, 9, 11], BLACK_STEPS = [1, 3, 6, 8, 10];
-	function layout(firstOctaveNote, whiteLabels, blackLabels) {
-		var map = {}, i, n;
-		for (i = 0; i < whiteLabels.length; i++) {
-			n = firstOctaveNote + Math.floor(i / 7) * 12 + WHITE_STEPS[i % 7];
-			map[n] = { key: whiteLabels[i], black: false };
-		}
-		for (i = 0; i < blackLabels.length; i++) {
-			n = firstOctaveNote + Math.floor(i / 5) * 12 + BLACK_STEPS[i % 5];
-			map[n] = { key: blackLabels[i], black: true };
-		}
-		return map;
-	}
-	var KEYS = advanced
-		? layout(36, "1234567890qwertyuiopasdfg".split(""), "!@$%^*(QWETYIOPSD".split(""))
-		: layout(60, ["A", "S", "D", "F", "G", "H", "J", "K", "L", ":", "'"], ["W", "E", "T", "Y", "U", "O", "P"]);
+	function show(i) {
+		if (!songs.length) return;
+		index = (i % songs.length + songs.length) % songs.length;
+		var song = songs[index];
 
-	var NAMES = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-	function noteNumber(token) {
-		var m = /^([A-G])(#|b)?(-?\d)$/.exec(token);
-		if (!m) return null;
-		return (parseInt(m[3], 10) + 1) * 12 + NAMES[m[1]] + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0);
-	}
+		var title = $("title");
+		title.innerHTML = "";
+		title.appendChild(document.createTextNode(song.title));
+		if (song.by) {
+			var by = document.createElement("i");
+			by.appendChild(document.createTextNode(song.by));
+			title.appendChild(document.createTextNode(" | "));
+			title.appendChild(by);
+		}
 
-	// Songs that don't fit this piano are moved. The written key is kept when it fits; otherwise
-	// the shift with the fewest black keys wins, preferring whole octaves, then small moves.
-	function fitShift(tokens) {
-		var best = null, bestCost = Infinity;
-		for (var shift = -24; shift <= 24; shift++) {
-			var ok = true, blacks = 0;
-			for (var j = 0; j < tokens.length && ok; j++) {
-				var n = noteNumber(tokens[j]);
-				if (n === null) continue;
-				var key = KEYS[n + shift];
-				if (!key) ok = false;
-				else if (key.black) blacks++;
+		// Long songs have to fit above the key bar: first drop the blank lines some sheets use
+		// as spacing, then shrink the text.
+		var notes = $("notes"), music = notes.parentNode, room = window.innerHeight - 22;
+		var texts = [song.keys, song.keys.replace(/\n\s*\n/g, "\n")];
+		for (var t = 0; t < texts.length; t++) {
+			notes.textContent = texts[t];
+			for (var size = 12; size >= 8; size--) {
+				music.style.fontSize = size + "px";
+				if (music.offsetHeight <= room) break;
 			}
-			if (!ok) continue;
-			if (shift === 0) return 0;
-			var cost = blacks + (shift % 12 === 0 ? 0 : 2) + Math.abs(shift) / 100;
-			if (cost < bestCost) { best = shift; bestCost = cost; }
+			if (music.offsetHeight <= room && (size >= 10 || t === texts.length - 1)) break;
 		}
-		return best;
+
+		$("key").textContent = (index + 1) + " / " + songs.length;
+		try { window.localStorage.setItem(STORE, String(index)); } catch (e) { /* storage unavailable */ }
 	}
 
-	function show(index) {
-		var song = songs[index], box = $("keys"), foot = $("foot");
-		box.innerHTML = "";
-		box.scrollTop = 0;
-		var all = song.notes.replace(/\|/g, " ").split(/\s+/);
-		var shift = fitShift(all);
+	// The piano's arrow keys call these (gmt_instrument_base: SheetMusicBack/Forward).
+	window.pageBack = function () { show(index - 1); };
+	window.pageForward = function () { show(index + 1); };
 
-		var mode = (advanced ? "Advanced: Shift for yellow keys" : "Basic: Ctrl for advanced") + " · ← → change song";
-		if (shift === null) {
-			box.innerHTML = "<p>This song doesn't fit the basic keys.<br>Press Ctrl on the piano for advanced mode.</p>";
-			foot.textContent = mode;
-			return;
-		}
-		if (shift % 12 === 0 && shift !== 0) mode += " · moved " + (shift > 0 ? "up " : "down ") + Math.abs(shift / 12) + " octave" + (Math.abs(shift) > 12 ? "s" : "");
-		else if (shift !== 0) mode += " · changed key to fit";
-		foot.textContent = mode;
+	$("mode").textContent = mode === "advanced" ? "Advanced" : "Basic";
 
-		var lines = song.notes.split("|");
-		for (var l = 0; l < lines.length; l++) {
-			var line = document.createElement("div"), tokens = lines[l].replace(/^\s+|\s+$/g, "").split(/\s+/);
-			line.className = "line";
-			for (var t = 0; t < tokens.length; t++) {
-				var span = document.createElement("span");
-				if (tokens[t] === "-") {
-					span.className = "gap";
-				} else {
-					var n = noteNumber(tokens[t]);
-					if (n === null) continue;
-					var key = KEYS[n + shift];
-					span.className = key.black ? "k black" : "k";
-					span.textContent = key.key;
-				}
-				line.appendChild(span);
-				line.appendChild(document.createTextNode(" "));
-			}
-			box.appendChild(line);
-		}
-		try { window.localStorage.setItem("pianoSong", String(index)); } catch (e) { /* storage unavailable */ }
-	}
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "songs.json", true);
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState !== 4) return;
+		try { songs = JSON.parse(xhr.responseText)[mode] || []; } catch (e) { songs = []; }
+		if (!songs.length) { $("notes").textContent = "No sheet music yet."; return; }
 
-	var select = $("song");
-	for (var i = 0; i < songs.length; i++) {
-		var opt = document.createElement("option");
-		opt.value = String(i);
-		opt.textContent = songs[i].title;
-		select.appendChild(opt);
-	}
-	var start = 0;
-	try { start = parseInt(window.localStorage.getItem("pianoSong"), 10) || 0; } catch (e) { start = 0; }
-	if (start < 0 || start >= songs.length) start = 0;
-	select.value = String(start);
-
-	function go(delta) {
-		var next = (parseInt(select.value, 10) + delta + songs.length) % songs.length;
-		select.value = String(next);
-		show(next);
-	}
-	// The piano's arrow keys call these (gmt_instrument_base: SheetMusicForward/Back).
-	window.pageForward = function () { go(1); };
-	window.pageBack = function () { go(-1); };
-
-	select.onchange = function () { show(parseInt(select.value, 10)); };
-	$("prev").onclick = function (e) { if (e && e.preventDefault) e.preventDefault(); go(-1); return false; };
-	$("next").onclick = function (e) { if (e && e.preventDefault) e.preventDefault(); go(1); return false; };
-	show(start);
+		var m = /[?&]type=(-?\d+)/.exec(window.location.search), start = 0;
+		if (m) start = parseInt(m[1], 10);
+		else try { start = parseInt(window.localStorage.getItem(STORE), 10) || 0; } catch (e) { start = 0; }
+		show(start);
+	};
+	xhr.send();
 })();
