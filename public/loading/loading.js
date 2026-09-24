@@ -150,13 +150,47 @@
 
 	/* ---------- download progress ---------- */
 
-	var filesTotal = 0, filesNeeded = 0;
+	var filesTotal = 0, filesNeeded = 0, stageFloor = 0, shown = 0;
+
+	// Workshop content arrives without file counts, so each loading stage also moves
+	// the bar to at least a set point. The bar never moves backwards.
+	var STAGES = [
+		[/retrieving server info/i, 5],
+		[/mounting addons|workshop/i, 15],
+		[/server cache/i, 30],
+		[/downloading|received/i, 40],
+		[/workshop complete/i, 60],
+		[/sending client info/i, 80],
+		[/client info sent/i, 88],
+		[/starting lua|lua started/i, 95]
+	];
 
 	function updateProgress() {
-		var pct = 0;
-		if (filesTotal > 0) pct = Math.max(0, Math.min(100, Math.round((filesTotal - filesNeeded) / filesTotal * 100)));
-		$("progress-fill").style.width = pct + "%";
+		var pct = stageFloor;
+		if (filesTotal > 0) {
+			// File downloads fill the stretch between 40% and 80%.
+			var done = Math.max(0, Math.min(1, (filesTotal - filesNeeded) / filesTotal));
+			pct = Math.max(pct, 40 + Math.round(done * 40));
+		}
+		shown = Math.max(shown, Math.min(100, pct));
+		$("progress-fill").style.width = shown + "%";
 	}
+
+	function stageOf(status) {
+		for (var i = 0; i < STAGES.length; i++) {
+			if (STAGES[i][0].test(status)) stageFloor = Math.max(stageFloor, STAGES[i][1]);
+		}
+		updateProgress();
+	}
+
+	/* ---------- optional trace: config.trace logs each callback to the web server's access log ---------- */
+
+	function trace(name, value) {
+		if (!config.trace) return;
+		var img = new Image();
+		img.src = "trace.gif?cb=" + encodeURIComponent(name) + "&v=" + encodeURIComponent(String(value).slice(0, 80)) + "&t=" + new Date().getTime();
+	}
+	trace("pageload", navigator.userAgent);
 
 	/* ---------- player card ---------- */
 
@@ -222,16 +256,19 @@
 	/* ---------- Garry's Mod callbacks (must be globals) ---------- */
 
 	window.GameDetails = function (servername, serverurl, mapname, maxplayers, steamid, gamemode) {
+		trace("GameDetails", mapname + " " + gamemode);
 		showMap(mapname, gamemode);
 		loadPlayer(steamid);
 	};
 
 	window.SetFilesTotal = function (total) {
+		trace("SetFilesTotal", total);
 		filesTotal = total;
 		updateProgress();
 	};
 
 	window.SetFilesNeeded = function (needed) {
+		if (needed === 0 || needed % 25 === 0) trace("SetFilesNeeded", needed);
 		filesNeeded = needed;
 		updateProgress();
 	};
@@ -239,21 +276,21 @@
 	window.DownloadingFile = function (fileName) {
 		var name = String(fileName).split("/").pop();
 		setText($("status"), "Downloading " + name + (filesTotal ? " (" + (filesTotal - filesNeeded + 1) + " of " + filesTotal + ")" : ""));
+		stageOf("downloading");
 	};
 
 	window.SetStatusChanged = function (status) {
+		trace("SetStatusChanged", status);
 		setText($("status"), status);
 		// Garry's Mod stops reporting file counts once downloads are done.
-		if (/sending client info|client info sent|starting lua|lua started/i.test(status)) {
-			filesNeeded = 0;
-			if (!filesTotal) filesTotal = 1;
-			updateProgress();
-		}
+		if (/sending client info|client info sent|starting lua|lua started/i.test(status)) filesNeeded = 0;
+		stageOf(status);
 	};
 
 	/* ---------- demo mode (?demo) for previewing in a normal browser ---------- */
 
 	function demo(p) {
+		config.trace = false;
 		var map = p.map || "gmt_lobby2_r10";
 		window.GameDetails("GMod Tower", "", map, 64, "76561197960287930", "");
 		showPlayer({ name: "MacDGuy", gmc: 1683229, playtime: 3276 * 3600, lastOnline: 1292502720, vip: false });

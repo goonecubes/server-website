@@ -8,5 +8,9 @@ var LOADING_CONFIG = {
 	playerApi: "",
 
 	// How long each hint stays up, in milliseconds.
-	hintInterval: 8000
+	hintInterval: 8000,
+
+	// Debugging only: request trace.gif for every Garry's Mod callback so the calls
+	// show up in the web server's access log. Turn off once loading is confirmed working.
+	trace: true
 };
