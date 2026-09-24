@@ -201,6 +201,8 @@ code {
 .status dt { font-weight: bold; }
 .status dd { margin: 0; text-align: right; font-family: "Courier New", monospace; }
 .status-flag { color: var(--flag); font-weight: bold; }
+.status-flag.is-online { color: #6dff5a; }
+.status-flag.is-offline { color: #ff6b6b; }
 
 .ip-box {
 	font: 11px "Courier New", monospace;

@@ -16,8 +16,8 @@ export const site = {
 		{ name: "Server #1", address: "195.26.248.118:27015" }, // TODO: switch to the domain once there is one
 	],
 
-	// Shown in the sidebar until the live status API exists.
-	status: { label: "CLOSED BETA", players: "-- / --", map: "Lobby 2" },
+	// Placeholders shown until /live/live.json loads (it is refreshed every minute on the VPS).
+	status: { label: "CHECKING", players: "-- / --", map: "--" },
 
 	// Scrolling news ticker under the menu.
 	ticker: [

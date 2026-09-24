@@ -72,9 +72,9 @@ const server = site.servers[0];
 					<h3 class="side-title">:: Server Status ::</h3>
 					<div class="side-body">
 						<dl class="status">
-							<dt>Status:</dt><dd class="status-flag">[{site.status.label}]</dd>
-							<dt>Players:</dt><dd>[{site.status.players}]</dd>
-							<dt>Map:</dt><dd>[{site.status.map}]</dd>
+							<dt>Status:</dt><dd class="status-flag" id="live-status">[{site.status.label}]</dd>
+							<dt>Players:</dt><dd id="live-players">[{site.status.players}]</dd>
+							<dt>Map:</dt><dd id="live-map">[{site.status.map}]</dd>
 						</dl>
 						<div class="ip-box">{server.address}</div>
 						<a class="btn btn-gold" href={`steam://connect/${server.address}`}>Connect Now!</a>
@@ -115,7 +115,7 @@ const server = site.servers[0];
 				<div class="side-box counter-box">
 					<div class="side-body center">
 						<div>You are visitor #</div>
-						<div class="counter" title="The live counter switches on at launch">
+						<div class="counter" id="live-counter">
 							{"000000".split("").map((d) => <span>{d}</span>)}
 						</div>
 					</div>
@@ -135,6 +135,49 @@ const server = site.servers[0];
 			GMod Tower artwork &copy; PixelTail Games. Carrying on the legacy of <a href="https://www.pixeltailgames.com/">GMod Tower</a>.</p>
 		</footer>
 	</div>
+
+	<script is:inline>
+		// Live server status and visitor counter, refreshed every minute on the VPS.
+		(function () {
+			function mapName(map) {
+				if (/^gmt_lobby2/.test(map)) return "Lobby 2";
+				if (/^gmt_build0|^gmt_lobby_/.test(map)) return "Lobby";
+				return map.replace(/^gmt_/, "");
+			}
+			function set(id, text, cls) {
+				var el = document.getElementById(id);
+				if (!el) return;
+				el.textContent = "[" + text + "]";
+				if (cls !== undefined) el.className = "status-flag " + cls;
+			}
+			fetch("/live/live.json", { cache: "no-store" })
+				.then(function (r) { return r.json(); })
+				.then(function (live) {
+					var s = live.server || {};
+					if (s.online) {
+						set("live-status", "ONLINE", "is-online");
+						set("live-players", s.players + " / " + s.maxPlayers);
+						set("live-map", mapName(s.map || ""));
+					} else {
+						set("live-status", "OFFLINE", "is-offline");
+						set("live-players", "-- / --");
+						set("live-map", "--");
+					}
+					var digits = String(Math.max(0, live.visitors | 0));
+					while (digits.length < 6) digits = "0" + digits;
+					var counter = document.getElementById("live-counter");
+					if (counter) {
+						counter.innerHTML = "";
+						digits.split("").forEach(function (d) {
+							var span = document.createElement("span");
+							span.textContent = d;
+							counter.appendChild(span);
+						});
+					}
+				})
+				.catch(function () { /* keep the placeholders */ });
+		})();
+	</script>
 
 	<script is:inline define:vars={{ featured }}>
 		// Rotate the Featured Game box on each page load.
