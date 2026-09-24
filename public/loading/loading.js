@@ -209,8 +209,12 @@
 
 	function showPlayer(p) {
 		if (!p || !p.name) return;
-		setText($("name"), p.name);
-		$("name").className = "outlined" + (p.vip ? " vip" : "");
+		var nameEl = $("name");
+		setText(nameEl, p.name);
+		nameEl.className = "outlined" + (p.vip ? " vip" : "");
+		// Shrink long names to fit (down to 12px), then fall back to the CSS ellipsis.
+		if (document.body.className.indexOf("has-player") < 0) document.body.className += " has-player";
+		for (var size = 21; size > 12 && nameEl.scrollWidth > nameEl.clientWidth; size--) nameEl.style.fontSize = size - 1 + "px";
 		if (p.avatar) $("avatar").style.backgroundImage = "url('" + String(p.avatar).replace(/'/g, "%27") + "')";
 
 		var stats = $("stats");
@@ -223,7 +227,10 @@
 			stats.appendChild(div);
 		}
 		if (p.gmc != null) line("GMC:", commas(p.gmc));
-		if (p.playtime != null) line("Playtime:", commas(p.playtime / 3600) + " hours");
+		if (p.playtime != null) {
+			var hours = Math.floor(p.playtime / 3600), mins = Math.floor(p.playtime / 60);
+			line("Playtime:", hours >= 1 ? commas(hours) + (hours === 1 ? " hour" : " hours") : mins + (mins === 1 ? " minute" : " minutes"));
+		}
 		if (p.lastOnline) {
 			var gap = document.createElement("div");
 			gap.className = "gap";

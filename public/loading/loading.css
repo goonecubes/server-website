@@ -205,7 +205,7 @@ body.has-player #card { display: block; }
 	-webkit-background-size: cover;
 	background-size: cover;
 }
-#who { top: 4px; left: 138px; width: 126px; }
+#who { top: 4px; left: 138px; width: 144px; }
 #who div { position: static; }
 #name {
 	font-size: 21px;
