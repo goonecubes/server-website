@@ -12,7 +12,7 @@ export const site = {
 	tagline: "Life Above the Clouds",
 
 	servers: [
-		{ name: "Server #1", address: "join.skylinetower.example" }, // TODO: real address
+		{ name: "Server #1", address: "195.26.248.118:27015" }, // TODO: switch to the domain once there is one
 	],
 
 	// Shown in the sidebar until the live status API exists.
