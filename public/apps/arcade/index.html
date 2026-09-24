@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+	Lobby arcade machines. The game server opens this page in a popup:
+		/apps/arcade/?game=<id>      (gmt_arcade_open; older code uses ?flash=<id>)
+	Games are Flash files played with Ruffle (self-hosted in ruffle/, copied in at build time).
+	A machine works once games/<id>.swf exists; until then it shows "out of order".
+	Without ?game the page lists every machine and whether its game is installed.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Arcade</title>
+<link rel="stylesheet" href="arcade.css">
+</head>
+<body>
+<div id="bar"><span id="title">Arcade</span><span id="hint"></span></div>
+<div id="stage"><div id="message"></div></div>
+<script src="games.js"></script>
+<script src="arcade.js"></script>
+</body>
+</html>

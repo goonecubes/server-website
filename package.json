@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node tools/copy-ruffle.mjs",
     "dev": "astro dev",
+    "prebuild": "node tools/copy-ruffle.mjs",
     "build": "astro build",
     "preview": "astro preview"
   },
@@ -11,5 +13,8 @@
     "@fontsource/arvo": "^5.3.0",
     "@fontsource/lilita-one": "^5.3.0",
     "astro": "^7.3.4"
+  },
+  "devDependencies": {
+    "@ruffle-rs/ruffle": "^0.6.0"
   }
 }

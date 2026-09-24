@@ -1,0 +1,41 @@
+html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; }
+body { font: 12px Verdana, Geneva, sans-serif; color: #e6eef6; }
+#sheet {
+	position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+	background: rgba(6, 26, 40, 0.9);
+	border: 1px solid #62a7e3;
+	border-radius: 6px;
+}
+#top {
+	position: absolute; left: 0; right: 0; top: 0; height: 30px;
+	background: #0a3447; border-bottom: 1px solid #1c678a;
+	border-radius: 6px 6px 0 0; text-align: center;
+}
+#top a {
+	position: absolute; top: 3px; width: 24px; height: 22px; line-height: 20px;
+	color: #fff; text-decoration: none; font-size: 20px; font-weight: bold;
+	background: #1c678a; border-radius: 3px;
+}
+#prev { left: 6px; }
+#next { right: 6px; }
+#top a:hover { background: #62a7e3; }
+#song {
+	margin-top: 4px; width: 70%; height: 22px;
+	font: bold 12px Verdana, Geneva, sans-serif;
+	background: #06202f; color: #fff; border: 1px solid #1c678a;
+}
+#keys {
+	position: absolute; left: 0; right: 0; top: 31px; bottom: 20px;
+	overflow: auto; padding: 6px 10px;
+	font: bold 17px/28px "Courier New", Courier, monospace;
+	word-spacing: 2px;
+}
+#keys .line { white-space: normal; }
+#keys .k { display: inline-block; min-width: 14px; text-align: center; color: #fff; }
+#keys .k.black { color: #f4c542; }
+#keys .gap { display: inline-block; width: 16px; }
+#foot {
+	position: absolute; left: 0; right: 0; bottom: 0; height: 19px; line-height: 19px;
+	text-align: center; font-size: 10px; color: #8fb6cc;
+	border-top: 1px solid #1c678a;
+}

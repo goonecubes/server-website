@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+	Piano sheet music, shown above the piano when a player presses Space.
+	The game opens it at 450x250 (basic keys) or 600x250 with ?adv=1 (advanced keys).
+	Plain ES5 and old CSS: it may run in Garry's Mod's old Awesomium browser.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Sheet Music</title>
+<link rel="stylesheet" href="piano.css">
+</head>
+<body>
+<div id="sheet">
+	<div id="top">
+		<a id="prev" href="#" title="Previous song">&lsaquo;</a>
+		<select id="song"></select>
+		<a id="next" href="#" title="Next song">&rsaquo;</a>
+	</div>
+	<div id="keys"></div>
+	<div id="foot"></div>
+</div>
+<script src="songs.js"></script>
+<script src="piano.js"></script>
+</body>
+</html>
