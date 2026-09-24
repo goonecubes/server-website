@@ -150,33 +150,41 @@
 
 	/* ---------- download progress ---------- */
 
-	var filesTotal = 0, filesNeeded = 0, stageFloor = 0, shown = 0;
+	var filesTotal = 0, filesNeeded = -1, stageFloor = 0, shown = 0;
 
-	// Workshop content arrives without file counts, so each loading stage also moves
-	// the bar to at least a set point. The bar never moves backwards.
+	// Status messages in the order Garry's Mod sends them (confirmed from a real join).
+	// Each moves the bar to at least its value; the bar never moves backwards.
 	var STAGES = [
-		[/retrieving server info/i, 5],
-		[/mounting addons|workshop/i, 15],
-		[/server cache/i, 30],
-		[/downloading|received/i, 40],
-		[/workshop complete/i, 60],
-		[/sending client info/i, 80],
-		[/client info sent/i, 88],
-		[/starting lua|lua started/i, 95]
+		[/retrieving server info/i, 3],
+		[/string tables/i, 6],
+		[/fetching info about workshop/i, 10],
+		[/mounting workshop|workshop complete/i, 50],
+		[/downloading /i, 52],
+		[/loading the map/i, 60],
+		[/server cache/i, 68],
+		[/sending client info/i, 75],
+		[/client info sent/i, 80],
+		[/starting lua/i, 85],
+		[/lua started/i, 90],
+		[/fully connected/i, 97],
+		[/ready to play/i, 100]
 	];
 
 	function updateProgress() {
 		var pct = stageFloor;
-		if (filesTotal > 0) {
-			// File downloads fill the stretch between 40% and 80%.
+		if (filesTotal > 0 && filesNeeded >= 0) {
+			// Server (FastDL) downloads fill the stretch between 50% and 60%.
 			var done = Math.max(0, Math.min(1, (filesTotal - filesNeeded) / filesTotal));
-			pct = Math.max(pct, 40 + Math.round(done * 40));
+			pct = Math.max(pct, 50 + Math.round(done * 10));
 		}
 		shown = Math.max(shown, Math.min(100, pct));
 		$("progress-fill").style.width = shown + "%";
 	}
 
 	function stageOf(status) {
+		// Workshop downloads report "3/17 (3.2 GB total) - ...": fill 10% to 50% by addon count.
+		var ws = /^(\d+)\/(\d+) \(/.exec(status);
+		if (ws && +ws[2] > 0) stageFloor = Math.max(stageFloor, 10 + Math.round(+ws[1] / +ws[2] * 40));
 		for (var i = 0; i < STAGES.length; i++) {
 			if (STAGES[i][0].test(status)) stageFloor = Math.max(stageFloor, STAGES[i][1]);
 		}
@@ -281,9 +289,9 @@
 
 	window.SetStatusChanged = function (status) {
 		trace("SetStatusChanged", status);
-		setText($("status"), status);
-		// Garry's Mod stops reporting file counts once downloads are done.
-		if (/sending client info|client info sent|starting lua|lua started/i.test(status)) filesNeeded = 0;
+		status = String(status);
+		// Workshop lines look like "2/17 (3.2 GB total) - Downloaded!\n'Addon name'": show them on one line.
+		setText($("status"), status.replace(/\s*\n\s*/g, " "));
 		stageOf(status);
 	};
 
