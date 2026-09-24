@@ -7,7 +7,7 @@ const links = {
 
 export const site = {
 	name: "Skyline Tower",
-	tagline: "Life Above the Clouds",
+	tagline: "New Gmod Tower Lobby 2 Server",
 
 	// false while in closed beta: asks search engines not to index the site. Flip at launch.
 	indexable: false,
