@@ -416,6 +416,128 @@ code {
 	border: 1px solid #000;
 }
 
+/* ---------- Individual gamemode pages (themed per gamemode via --gm-bg / --gm-border) ---------- */
+
+.crumbs { margin: 0 2px 8px; font-size: 11px; color: var(--muted); }
+.gm-page .gm-banner { margin-bottom: 8px; }
+.gm-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+	margin: 0 0 0;
+	padding: 0 4px;
+}
+.gm-tabs a {
+	padding: 6px 12px;
+	font: bold 11px/1.2 Verdana, Tahoma, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	text-decoration: none;
+	color: #f4f4f4;
+	background: color-mix(in srgb, var(--gm-bg) 70%, #000);
+	border: 1px solid var(--gm-border);
+	border-bottom: 0;
+	border-radius: 4px 4px 0 0;
+}
+.gm-tabs a:hover { color: #fff; background: var(--gm-bg); }
+.gm-tabs a.active { background: var(--gm-border); color: #111; }
+.gm-body {
+	border: 1px solid var(--gm-border);
+	outline: 1px solid var(--frame);
+	outline-offset: 1px;
+	background: color-mix(in srgb, var(--gm-bg) 55%, #0a0f2a);
+	color: #f4f7ff;
+	margin: 0 2px 14px;
+}
+.gm-hero {
+	height: 190px;
+	background: center 30% / cover no-repeat;
+	border-bottom: 1px solid var(--gm-border);
+}
+.gm-content { padding: 12px 16px 16px; }
+.gm-tagline {
+	margin: 0 0 10px;
+	font: 700 22px/1.25 "Arvo", Rockwell, Georgia, serif;
+	color: #fff;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+}
+.gm-stats {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 2px 14px;
+	margin: 0 0 12px;
+	padding: 8px 12px;
+	background: rgba(0, 0, 0, 0.3);
+	border: 1px solid var(--gm-border);
+}
+.gm-stats dt { font-weight: bold; color: var(--gm-border); }
+.gm-stats dd { margin: 0; }
+.gm-section h2 {
+	margin: 14px 0 4px;
+	font: 700 15px/1.3 "Arvo", Rockwell, Georgia, serif;
+	color: var(--gm-border);
+}
+.gm-section p, .gm-intro { margin: 0 0 8px; }
+.gm-body a { color: #fff; }
+
+.gm-cards { display: flex; flex-direction: column; gap: 6px; }
+.gm-card {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	padding: 7px;
+	background: rgba(0, 0, 0, 0.28);
+	border: 1px solid var(--gm-border);
+}
+.gm-card img, .gm-card-noimg {
+	flex: 0 0 50px;
+	width: 50px;
+	height: 50px;
+	border: 1px solid var(--gm-border);
+	object-fit: cover;
+}
+.gm-card-noimg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font: 700 22px "Arvo", Georgia, serif;
+	color: var(--gm-border);
+	background: rgba(0, 0, 0, 0.35);
+}
+.gm-card-main { flex: 1; min-width: 0; }
+.gm-card h3 { margin: 0 0 2px; font: bold 13px/1.3 Verdana, Tahoma, sans-serif; color: #fff; }
+.gm-card-side { float: right; font-weight: normal; font-size: 11px; color: var(--gm-border); margin-left: 8px; }
+.gm-card p { margin: 0; font-size: 11.5px; }
+
+.gm-maps { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 8px; }
+.gm-map {
+	display: flex;
+	gap: 8px;
+	padding: 6px;
+	background: rgba(0, 0, 0, 0.28);
+	border: 1px solid var(--gm-border);
+}
+.gm-map img {
+	flex: 0 0 112px;
+	width: 112px;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	border: 1px solid #000;
+}
+.gm-map-main { min-width: 0; }
+.gm-map h3 { margin: 0; font: bold 13px/1.3 Verdana, Tahoma, sans-serif; color: #fff; }
+.gm-map p { margin: 2px 0 0; font-size: 11px; }
+.gm-map-author, .gm-map-facts { color: var(--gm-border); }
+
+.gm-payout th { background: color-mix(in srgb, var(--gm-bg) 80%, #000); }
+.gm-payout td { border-top-color: rgba(255, 255, 255, 0.12); }
+.gm-payout tr:nth-child(even) td { background: rgba(0, 0, 0, 0.2); }
+
+.gm-link { display: block; text-decoration: none; }
+.gm-link:hover .gm-banner { filter: brightness(1.12); }
+.gm-line { margin: 3px 8px 0; font-size: 11px; color: var(--muted); }
+.gm-line b { color: var(--text); }
+
 /* ---------- Stores ---------- */
 
 .store-grid {

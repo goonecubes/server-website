@@ -1,0 +1,102 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { pages } from "../../../data/gamemode-pages.js";
+import { released, inProduction } from "../../../data/gamemodes.js";
+
+export function getStaticPaths() {
+	return pages.flatMap((page) =>
+		page.tabs.map((tab) => ({
+			params: { gm: page.id, tab: tab.id === "overview" ? undefined : tab.id },
+			props: { page, tab },
+		}))
+	);
+}
+
+const { page, tab } = Astro.props;
+const summary = [...released, ...inProduction].find((g) => g.id === page.id) || {};
+const href = (t) => (t.id === "overview" ? `/gamemodes/${page.id}/` : `/gamemodes/${page.id}/${t.id}/`);
+const title = tab.id === "overview" ? page.name : `${page.name} - ${tab.label}`;
+const theme = `--gm-bg:${page.theme.bg};--gm-border:${page.theme.border};`;
+const description = tab.tagline
+	? `${page.name} on Skyline Tower: ${tab.tagline}`
+	: `${page.name} on Skyline Tower: ${tab.label.toLowerCase()}.`;
+---
+<Base title={title} description={description}>
+	<div class="gm-page" style={theme}>
+		<p class="crumbs"><a href="/gamemodes/">Gamemodes</a> &raquo; <a href={`/gamemodes/${page.id}/`}>{page.name}</a>{tab.id !== "overview" && <> &raquo; {tab.label}</>}</p>
+
+		{summary.banner ? (
+			<img class="gm-banner" src={summary.banner} alt={page.name} />
+		) : (
+			<div class={`gm-banner gm-banner-${page.id}`} role="img" aria-label={page.name}>{page.name}</div>
+		)}
+
+		<nav class="gm-tabs" aria-label={`${page.name} sections`}>
+			{page.tabs.map((t) => (
+				<a href={href(t)} class={t.id === tab.id ? "active" : undefined} aria-current={t.id === tab.id ? "page" : undefined}>{t.label}</a>
+			))}
+		</nav>
+
+		<section class="gm-body">
+			{tab.bg && <div class="gm-hero" style={`background-image:url('${tab.bg}')`} role="presentation"></div>}
+			<div class="gm-content">
+				{tab.tagline && <h1 class="gm-tagline">{tab.tagline}</h1>}
+				{!tab.tagline && <h1 class="gm-tagline">{tab.label}</h1>}
+
+				{tab.id === "overview" && (
+					<dl class="gm-stats">
+						{page.stats.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}
+					</dl>
+				)}
+
+				{tab.sections && tab.sections.map(([heading, text]) => (
+					<div class="gm-section">
+						<h2>{heading}</h2>
+						<p>{text}</p>
+					</div>
+				))}
+
+				{tab.intro && <p class="gm-intro">{tab.intro}</p>}
+
+				{tab.kind === "cards" && (
+					<div class="gm-cards">
+						{tab.cards.map((c) => (
+							<div class="gm-card">
+								{c.img ? <img src={c.img} alt="" width="50" height="50" loading="lazy" /> : <div class="gm-card-noimg" aria-hidden="true">?</div>}
+								<div class="gm-card-main">
+									<h3>{c.title}{c.side && <span class="gm-card-side">{c.side}</span>}</h3>
+									<p>{c.text}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				)}
+
+				{tab.kind === "maps" && (
+					<div class="gm-maps">
+						{tab.maps.map((m) => (
+							<div class="gm-map">
+								{m.image && <img src={m.image} alt="" loading="lazy" />}
+								<div class="gm-map-main">
+									<h3>{m.name}</h3>
+									{m.author && <p class="gm-map-author">by {m.author}</p>}
+									{m.facts && <p class="gm-map-facts">{m.facts.join(" · ")}</p>}
+									{m.desc && <p>{m.desc}</p>}
+								</div>
+							</div>
+						))}
+					</div>
+				)}
+
+				{tab.kind === "payout" && (
+					<table class="list gm-payout">
+						<thead><tr><th>Reward</th><th class="num">GMC</th></tr></thead>
+						<tbody>
+							{tab.payout.map(([what, amount]) => <tr><td>{what}</td><td class="num">{amount}</td></tr>)}
+						</tbody>
+					</table>
+				)}
+			</div>
+		</section>
+	</div>
+</Base>

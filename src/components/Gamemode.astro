@@ -2,24 +2,13 @@
 const { gm } = Astro.props;
 const mapLabel = gm.maps.length === 1 ? "1 map" : `${gm.maps.length} maps`;
 ---
-<details class="gm" id={gm.id}>
-	<summary>
+<div class="gm" id={gm.id}>
+	<a class="gm-link" href={`/gamemodes/${gm.id}/`}>
 		{gm.banner ? (
 			<img class="gm-banner" src={gm.banner} alt={gm.name} loading="lazy" />
 		) : (
 			<div class={`gm-banner gm-banner-${gm.id}`} role="img" aria-label={gm.name}>{gm.name}</div>
 		)}
-	</summary>
-	<div class="gm-info">
-		<div class="gm-stats">{gm.players} &middot; {mapLabel}</div>
-		<p>{gm.desc}</p>
-		<div class="map-grid">
-			{gm.maps.map((m) => (
-				<figure>
-					{m.image && <img src={m.image} alt="" loading="lazy" />}
-					<figcaption>{m.name}</figcaption>
-				</figure>
-			))}
-		</div>
-	</div>
-</details>
+	</a>
+	<p class="gm-line"><b>{gm.players}</b> &middot; {mapLabel} &middot; <a href={`/gamemodes/${gm.id}/`}>View more info &raquo;</a></p>
+</div>

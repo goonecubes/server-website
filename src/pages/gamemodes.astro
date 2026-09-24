@@ -8,7 +8,7 @@ import { released, inProduction } from "../data/gamemodes.js";
 	<h1 class="page-heading">Gamemodes</h1>
 
 	<Panel title="Released">
-		<p class="note">&#9654; Every gamemode that's live and ready to play. Click a banner to read more and see its maps.</p>
+		<p class="note">&#9654; Every gamemode that's live and ready to play. Click a banner to read all about it.</p>
 		<div class="gm-list">
 			{released.map((gm) => <Gamemode gm={gm} />)}
 		</div>
@@ -21,14 +21,4 @@ import { released, inProduction } from "../data/gamemodes.js";
 		</div>
 	</Panel>
 
-	<script is:inline>
-		// Open the gamemode named in the URL (e.g. from the Featured Game box), including
-		// when that link is clicked while already on this page.
-		function openFromHash() {
-			var target = location.hash && document.querySelector("details" + location.hash);
-			if (target) target.open = true;
-		}
-		openFromHash();
-		window.addEventListener("hashchange", openFromHash);
-	</script>
 </Base>
