@@ -63,7 +63,7 @@
 		var all = song.notes.replace(/\|/g, " ").split(/\s+/);
 		var shift = fitShift(all);
 
-		var mode = advanced ? "Advanced keys: hold Shift for the yellow keys" : "Basic keys: Ctrl on the piano switches to advanced";
+		var mode = (advanced ? "Advanced: Shift for yellow keys" : "Basic: Ctrl for advanced") + " · ← → change song";
 		if (shift === null) {
 			box.innerHTML = "<p>This song doesn't fit the basic keys.<br>Press Ctrl on the piano for advanced mode.</p>";
 			foot.textContent = mode;
@@ -113,6 +113,10 @@
 		select.value = String(next);
 		show(next);
 	}
+	// The piano's arrow keys call these (gmt_instrument_base: SheetMusicForward/Back).
+	window.pageForward = function () { go(1); };
+	window.pageBack = function () { go(-1); };
+
 	select.onchange = function () { show(parseInt(select.value, 10)); };
 	$("prev").onclick = function (e) { if (e && e.preventDefault) e.preventDefault(); go(-1); return false; };
 	$("next").onclick = function (e) { if (e && e.preventDefault) e.preventDefault(); go(1); return false; };
