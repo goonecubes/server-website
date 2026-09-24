@@ -179,7 +179,7 @@ body.logo-mode #banner { max-width: 270px; max-height: 104px; }
 
 #card {
 	display: none;
-	top: 478px;
+	top: 466px;
 	left: -1px;
 	width: 289px;
 	height: 140px;
@@ -223,7 +223,7 @@ body.has-player #card { display: block; }
 #stats .label-line { display: block; border-bottom: 1px solid #c9d1d6; margin-bottom: 2px; }
 
 #clock {
-	top: 572px;
+	top: 566px;
 	left: 0;
 	width: 921px;
 	text-align: center;
