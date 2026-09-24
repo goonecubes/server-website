@@ -41,6 +41,6 @@ const stores = [
 	<Panel title="Our Goal">
 		<p>GMod Tower meant a lot to a lot of people. We want to keep that experience alive, fix what's broken, and build it back up with the community.</p>
 		<p>The original GMod Tower and all of its artwork were created by <a href="https://www.pixeltailgames.com/">PixelTail Games</a>, who went on to make <a href="https://store.steampowered.com/app/394690/Tower_Unite/">Tower Unite</a>. Go check it out.</p>
-		<p>Found a bug, have an idea, or want to help test? Come talk to us on <a href={site.links.discord}>Discord</a>.</p>
+		{site.links.discord && <p>Found a bug, have an idea, or want to help test? Come talk to us on <a href={site.links.discord}>Discord</a>.</p>}
 	</Panel>
 </Base>

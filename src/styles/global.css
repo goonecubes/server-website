@@ -462,6 +462,7 @@ table.list td { padding: 4px 8px; border-top: 1px solid var(--panel-border); }
 table.list tr:nth-child(even) td { background: var(--row-alt); }
 table.list .num { text-align: right; font-variant-numeric: tabular-nums; }
 table.list .rank { width: 36px; text-align: center; font-weight: bold; }
+table.list .empty-row { color: var(--muted); font-style: italic; }
 
 /* ---------- Changelog ---------- */
 

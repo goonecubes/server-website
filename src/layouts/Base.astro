@@ -1,4 +1,8 @@
 ---
+// Fonts are self-hosted (no requests to Google), latin subsets only.
+import "@fontsource/arvo/latin-400.css";
+import "@fontsource/arvo/latin-700.css";
+import "@fontsource/lilita-one/latin-400.css";
 import "../styles/global.css";
 import { site } from "../site.js";
 import { released, inProduction } from "../data/gamemodes.js";
@@ -28,10 +32,8 @@ const server = site.servers[0];
 	<meta property="og:image" content={new URL("/img/gmt/shots/condo1.jpg", Astro.site)} />
 	<meta property="og:url" content={canonical} />
 	<meta name="theme-color" content="#0e1434" />
+	{!site.indexable && <meta name="robots" content="noindex, nofollow" />}
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lilita+One&display=swap" rel="stylesheet" />
 </head>
 <body>
 	<div id="page"><span id="top"></span>
@@ -100,13 +102,15 @@ const server = site.servers[0];
 					</div>
 				</div>
 
-				<div class="side-box">
-					<h3 class="side-title">:: Community ::</h3>
-					<div class="side-body center">
-						<p class="side-note">Chat, report bugs and hear about events first.</p>
-						<a class="btn btn-discord" href={site.links.discord}>Join our Discord</a>
+				{site.links.discord && (
+					<div class="side-box">
+						<h3 class="side-title">:: Community ::</h3>
+						<div class="side-body center">
+							<p class="side-note">Chat, report bugs and hear about events first.</p>
+							<a class="btn btn-discord" href={site.links.discord}>Join our Discord</a>
+						</div>
 					</div>
-				</div>
+				)}
 
 				<div class="side-box counter-box">
 					<div class="side-body center">
@@ -124,7 +128,7 @@ const server = site.servers[0];
 				<a href="/" class="badge badge-site"><img src="/logo-icon.svg" alt="" width="22" height="22" />Skyline<br />Tower</a>
 				<a href="https://gmod.facepunch.com/" class="badge badge-gmod">Powered by<br />Garry's Mod</a>
 				<span class="badge badge-source">Source&trade;<br />Engine</span>
-				<a href={site.links.discord} class="badge badge-discord">Join us on<br />Discord</a>
+				{site.links.discord && <a href={site.links.discord} class="badge badge-discord">Join us on<br />Discord</a>}
 			</div>
 			<p>Best viewed in 1024x768 with any browser</p>
 			<p>&copy; 2026 {site.name}. Not affiliated with PixelTail Games, Facepunch Studios or Valve.<br />
