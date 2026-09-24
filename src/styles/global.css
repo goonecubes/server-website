@@ -529,9 +529,18 @@ code {
 .gm-map p { margin: 2px 0 0; font-size: 11px; }
 .gm-map-author, .gm-map-facts { color: var(--gm-border); }
 
-.gm-payout th { background: color-mix(in srgb, var(--gm-bg) 80%, #000); }
-.gm-payout td { border-top-color: rgba(255, 255, 255, 0.12); }
-.gm-payout tr:nth-child(even) td { background: rgba(0, 0, 0, 0.2); }
+/* Payout tables take the gamemode's colours like the cards and tabs (selectors must beat table.list). */
+table.list.gm-payout { border-color: var(--gm-border); background: rgba(0, 0, 0, 0.28); }
+table.list.gm-payout th {
+	background: color-mix(in srgb, var(--gm-bg) 70%, #000);
+	color: var(--gm-border);
+	border-bottom: 1px solid var(--gm-border);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+table.list.gm-payout td { border-top-color: color-mix(in srgb, var(--gm-border) 30%, transparent); }
+table.list.gm-payout tr:nth-child(even) td { background: color-mix(in srgb, var(--gm-bg) 35%, transparent); }
+table.list.gm-payout td.num { color: var(--gm-border); font-weight: bold; white-space: nowrap; }
 
 .gm-link { display: block; text-decoration: none; }
 .gm-link:hover .gm-banner { filter: brightness(1.12); }
