@@ -166,8 +166,6 @@ code {
 }
 .ticker-track span { padding-right: 60px; white-space: pre; }
 @keyframes ticker { to { transform: translateX(-50%); } }
-/* Hold still while someone is reading it. */
-#ticker:hover .ticker-track { animation-play-state: paused; }
 /* No scrolling: show the whole text, wrapped, instead of a clipped first line. */
 @media (prefers-reduced-motion: reduce) {
 	#ticker { white-space: normal; line-height: 18px; padding: 4px 10px; }
