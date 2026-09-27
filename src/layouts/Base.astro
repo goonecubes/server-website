@@ -182,21 +182,34 @@ const server = site.servers[0];
 					});
 				}
 			}
+			// Remember the last status so every page draws it straight away instead of flashing
+			// the placeholders; live.json only changes once a minute, so reuse it for that long.
+			var KEY = "skyline-live", MAX_AGE = 60000;
+			function load() {
+				try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; }
+			}
+			function save(live) {
+				try { localStorage.setItem(KEY, JSON.stringify({ at: Date.now(), live: live })); } catch (e) {}
+			}
 			var busy = false;
 			function refresh() {
 				if (busy || document.hidden) return;
+				var cached = load();
+				if (cached && Date.now() - cached.at < MAX_AGE) return;
 				busy = true;
 				var ctrl = window.AbortController ? new AbortController() : null;
 				var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
 				fetch("/live/live.json", { cache: "no-store", signal: ctrl ? ctrl.signal : undefined })
 					.then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-					.then(show)
+					.then(function (live) { save(live); show(live); })
 					.catch(unknown)
 					.then(function () { clearTimeout(timer); busy = false; });
 			}
+			var cached = load();
+			if (cached && cached.live) show(cached.live);
 			refresh();
 			// Keep it current while the page stays open, but don't poll from background tabs.
-			setInterval(refresh, 60000);
+			setInterval(refresh, 15000);
 			document.addEventListener("visibilitychange", refresh);
 		})();
 	</script>
