@@ -3,37 +3,38 @@
 
 :root {
 	color-scheme: dark;
-	--page-bg: #070b1d;
-	--page-pattern: repeating-linear-gradient(135deg, rgba(120, 140, 255, 0.06) 0 6px, transparent 6px 12px);
-	--frame: #3b4a92;
-	--main-bg: #0e1434;
-	--panel-bg: #0a0f2a;
-	--panel-border: #303e86;
-	--title-from: #3f4fbd;
-	--title-to: #232d7c;
+	/* Neutral greys, like a late-2000s dark forum skin. GMT's gold and light blue are the only accents. */
+	--page-bg: #141414;
+	--page-pattern: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0 6px, transparent 6px 12px);
+	--frame: #4a4a4a;
+	--main-bg: #222222;
+	--panel-bg: #1a1a1a;
+	--panel-border: #3c3c3c;
+	--title-from: #585858;
+	--title-to: #333333;
 	--title-text: #ffffff;
-	--nav-from: #e3e7f1;
-	--nav-to: #a8b0c9;
-	--nav-text: #1b2152;
+	--nav-from: #e8e8e8;
+	--nav-to: #b0b0b0;
+	--nav-text: #222222;
 	--nav-hover: rgba(255, 255, 255, 0.5);
 	--nav-active: #ffd24a;
-	--nav-active-text: #1b2152;
-	--nav-edge: #6c7596;
-	--ticker-bg: #050817;
+	--nav-active-text: #222222;
+	--nav-edge: #777777;
+	--ticker-bg: #0b0b0b;
 	--ticker-text: #ffd84a;
-	--text: #d9def6;
-	--muted: #8e98c6;
-	--link: #86b6ff;
+	--text: #dddddd;
+	--muted: #999999;
+	--link: #7fb5ec;
 	--link-hover: #ffd24a;
 	--headline: #ffcc4d;
-	--rule: #2c3978;
-	--input-bg: #070b1f;
-	--code-bg: #070b1f;
-	--masthead-shade: linear-gradient(90deg, rgba(4, 8, 30, 0.85), rgba(4, 8, 30, 0.45) 60%, rgba(4, 8, 30, 0.2));
-	--row-alt: #111a42;
+	--rule: #383838;
+	--input-bg: #141414;
+	--code-bg: #141414;
+	--masthead-shade: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.15));
+	--row-alt: #292929;
 	--counter-bg: #000;
 	--counter-text: #7dff5a;
-	--note-bg: #0f2418;
+	--note-bg: #16241a;
 	--note-border: #3c7a4c;
 	--note-text: #9fe3a8;
 	--flag: #ffb347;
@@ -104,7 +105,7 @@ code {
 	text-transform: uppercase;
 	letter-spacing: 4px;
 	color: #fff;
-	text-shadow: 0 0 10px rgba(140, 190, 255, 0.8), 2px 3px 0 #0b1a4d;
+	text-shadow: 0 0 8px rgba(0, 0, 0, 0.8), 2px 3px 0 #000;
 }
 .site-tagline {
 	margin-top: 8px;
@@ -445,8 +446,8 @@ code {
 	border: 1px solid var(--gm-border);
 	outline: 1px solid var(--frame);
 	outline-offset: 1px;
-	background: color-mix(in srgb, var(--gm-bg) 55%, #0a0f2a);
-	color: #f4f7ff;
+	background: color-mix(in srgb, var(--gm-bg) 55%, var(--panel-bg));
+	color: #f4f4f4;
 	margin: 0 2px 14px;
 }
 .gm-hero {
@@ -561,10 +562,10 @@ table.list.gm-payout td.num { color: var(--gm-border); font-weight: bold; white-
 	text-align: center;
 	gap: 8px;
 	padding: 12px 10px 10px;
-	background: linear-gradient(#454b66, #2f3448);
+	background: linear-gradient(#4a4a4a, #2e2e2e);
 	border: 1px solid #000;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
-	color: #e8ebf7;
+	color: #eeeeee;
 	font-size: 11px;
 }
 .store-logo {
