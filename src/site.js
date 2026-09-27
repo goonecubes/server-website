@@ -6,7 +6,6 @@ const links = {
 	discord: "", // Discord invite, e.g. "https://discord.gg/abc123". Empty = no Discord anywhere on the site.
 	workshop: "https://steamcommunity.com/sharedfiles/filedetails/?id=3482011813", // the collection the servers load
 	// The Changelog page is only linked while public/changelog.json has entries (numbered keys).
-	// Empty it to { "date": "" } to hide it; the in-game Transit Station wall then says it's unavailable.
 	changelog: Object.keys(changelog).some((k) => /^\d+$/.test(k)) ? "/changelog" : "",
 };
 
@@ -28,8 +27,6 @@ export const site = {
 	ticker: [
 		"Welcome to Skyline Tower! The lobby is open and the condos are waiting.",
 		links.discord ? "Closed beta is underway. Join the Discord to get in on testing!" : "Closed beta is underway. Public launch is coming soon!",
-		"Condos now save your layout between visits.",
-		"Lobby events are back: Balloon Pop, Chainsaw Battle, Snowball Fight and more.",
 	],
 
 	links,
