@@ -1,55 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
-  <title id="title">Skyline Tower</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="rim" x1="0" y1="0" x2="0.7" y2="1">
-      <stop stop-color="#ffffff"/>
-      <stop offset=".28" stop-color="#bccbd5"/>
-      <stop offset=".5" stop-color="#586671"/>
-      <stop offset=".76" stop-color="#d8e5ec"/>
-      <stop offset="1" stop-color="#8795a0"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fc4ff"/>
+      <stop offset="0.55" stop-color="#3f86e6"/>
+      <stop offset="1" stop-color="#ff9a5c"/>
     </linearGradient>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#70c6ee"/>
-      <stop offset=".48" stop-color="#287ba7"/>
-      <stop offset=".49" stop-color="#1c587b"/>
-      <stop offset="1" stop-color="#102e43"/>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.08"/>
     </linearGradient>
-    <linearGradient id="stone" x1="0" y1="0" x2="1" y2=".25">
-      <stop stop-color="#ffffff"/>
-      <stop offset=".55" stop-color="#e6eff2"/>
-      <stop offset="1" stop-color="#9bb7c7"/>
-    </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#fff1b2"/>
-      <stop offset=".5" stop-color="#eec55b"/>
-      <stop offset="1" stop-color="#ab7423"/>
-    </linearGradient>
-    <clipPath id="face"><circle cx="64" cy="62" r="51"/></clipPath>
+    <clipPath id="r"><rect x="2" y="2" width="60" height="60" rx="14"/></clipPath>
   </defs>
-  <circle cx="64" cy="65" r="61" fill="#10191f"/>
-  <circle cx="64" cy="62" r="60" fill="url(#rim)" stroke="#182731" stroke-width="2"/>
-  <circle cx="64" cy="62" r="55" fill="#12384c" stroke="#edf7fb" stroke-width="1"/>
-  <circle cx="64" cy="62" r="51" fill="url(#sky)" stroke="#091f30" stroke-width="2"/>
-  <g clip-path="url(#face)">
-    <path d="M18 41Q64 0 110 41L110 48Q64 23 18 48Z" fill="#d6f4ff" opacity=".18"/>
-    <path d="M12 103V77H22V63H35V76H43V104ZM85 104V70H94V59H102V74H115V104Z" fill="#122f43"/>
-    <path d="M23 64H34V67H23ZM95 60H101V63H95Z" fill="#8fc8e2" opacity=".7"/>
-    <path d="M30 104V80H43V57H51V43H57V33H62V23H66V33H71V43H77V57H85V80H98V104Z" fill="#0b273a" stroke="#0b273a" stroke-width="5" stroke-linejoin="round"/>
-    <path d="M63 24H65V36H63Z" fill="url(#gold)"/>
-    <path d="M58 35H70V44H58Z" fill="url(#gold)"/>
-    <path d="M52 45H76V58H52Z" fill="url(#stone)"/>
-    <path d="M44 59H84V103H44Z" fill="url(#stone)"/>
-    <path d="M70 45H76V58H84V103H72V59H70Z" fill="#769eb7"/>
-    <path d="M31 82H43V103H31ZM85 82H97V103H85Z" fill="#b2cbd6"/>
-    <path d="M31 82H43V85H31ZM85 82H97V85H85ZM44 59H84V62H44ZM52 45H76V48H52Z" fill="#ffffff"/>
-    <path d="M57 50H61V55H57ZM65 50H69V55H65Z" fill="#20516e"/>
-    <path d="M50 67H55V72H50ZM60 67H65V72H60ZM50 77H55V82H50ZM60 77H65V82H60ZM50 87H55V92H50ZM60 87H65V92H60Z" fill="#244b63"/>
-    <path d="M76 67H79V72H76ZM76 77H79V82H76ZM76 87H79V92H76Z" fill="#315b73"/>
-    <path d="M35 89H39V95H35ZM89 89H93V95H89Z" fill="#305972"/>
-    <path d="M59 103V96H68V103" fill="#193d54"/>
-    <path d="M18 103H110V107H18Z" fill="url(#gold)"/>
-    <path d="M19 107H109V117H19Z" fill="#102b3b"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="#fff"/>
+  <g clip-path="url(#r)">
+    <rect x="2" y="2" width="60" height="60" fill="url(#bg)"/>
+    <circle cx="44" cy="40" r="9" fill="#ffd27a" opacity="0.9"/>
+    <path d="M2 62V48h7v-5h6v8h5V40h5v22z M40 62V45h6v-4h5v7h5v-3h6v17z" fill="#1d3773" opacity="0.55"/>
+    <path d="M26 62V22l3-3V11h2V6h2v5h2v8l3 3v40z" fill="#1d3773"/>
+    <path d="M29 26h2v2h-2zM33 26h2v2h-2zM29 31h2v2h-2zM33 31h2v2h-2zM29 36h2v2h-2zM33 36h2v2h-2zM29 41h2v2h-2zM33 41h2v2h-2zM29 46h2v2h-2zM33 46h2v2h-2z" fill="#ffe7a1"/>
+    <path d="M2 2h60v26C44 22 20 22 2 30z" fill="url(#gloss)"/>
   </g>
-  <path d="M19 39A51 51 0 0 1 109 39" fill="none" stroke="#d8f4ff" stroke-width="2" stroke-linecap="round" opacity=".65"/>
-  <path d="M45 119Q64 125 83 119" fill="none" stroke="#eef6fa" stroke-width="1.5" opacity=".65"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#fff" stroke-width="2"/>
 </svg>
