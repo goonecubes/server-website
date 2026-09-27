@@ -1,31 +1,3 @@
 {
-	"date": "Sep 23, 2026",
-	"1": [
-		"Condos",
-		"Condo layouts now save and load reliably between visits",
-		"CondOS Music, lights, blinds and skybox views restored",
-		"Fixed the vault getting stuck open after closing the bank",
-		"Fixed being checked out when walking into the condo lobby"
-	],
-	"2": [
-		"Lobby",
-		"Lobby events are back: Store Sale, Chainsaw Battle, Fist Fight, Balloon Pop, Obama Smash and Snowball Fight",
-		"The merchant wanders the lobby again, with his own shop music",
-		"Pool tubes spawn at the top of both waterslides",
-		"Trivia podiums restored",
-		"Blockles leaderboard restored on the Lobby 2 wall, with arrow keys, soft drop and hard drop"
-	],
-	"3": [
-		"Stores",
-		"Classic full-screen shop menus are back, now with a search box",
-		"20 missing items returned to the shelves",
-		"The Nature store is stocked again"
-	],
-	"4": [
-		"Fixes & Performance",
-		"Removed the loud static burst when running between areas",
-		"Big FPS improvement in and around Sweet Suite Furnishings",
-		"Shop NPCs blink and look at you again",
-		"Nightclub song requests work again"
-	]
+	"date": ""
 }

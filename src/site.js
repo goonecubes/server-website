@@ -1,8 +1,13 @@
+import changelog from "../public/changelog.json";
+
 // Everything that will change once real infrastructure exists lives here.
 // Leave a link empty ("") to hide every button, menu item and sentence that uses it.
 const links = {
 	discord: "", // Discord invite, e.g. "https://discord.gg/abc123". Empty = no Discord anywhere on the site.
 	workshop: "https://steamcommunity.com/sharedfiles/filedetails/?id=3482011813", // the collection the servers load
+	// The Changelog page is only linked while public/changelog.json has entries (numbered keys).
+	// Empty it to { "date": "" } to hide it; the in-game Transit Station wall then says it's unavailable.
+	changelog: Object.keys(changelog).some((k) => /^\d+$/.test(k)) ? "/changelog" : "",
 };
 
 export const site = {
@@ -31,7 +36,7 @@ export const site = {
 
 	nav: [
 		{ label: "Home", href: "/" },
-		{ label: "Changelog", href: "/changelog" },
+		{ label: "Changelog", href: links.changelog },
 		{ label: "Downloads", href: "/downloads" },
 		{ label: "Gamemodes", href: "/gamemodes" },
 		{ label: "About", href: "/about" },
@@ -45,7 +50,7 @@ export const site = {
 		{ label: "Getting Started", href: "/downloads" },
 		{ label: "Gamemodes", href: "/gamemodes" },
 		{ label: "Leaderboards", href: "/stats" },
-		{ label: "Latest Changes", href: "/changelog" },
+		{ label: "Latest Changes", href: links.changelog },
 		{ label: "Staff Team", href: "/staff" },
 		{ label: "Help & FAQ", href: "/faq" },
 		{ label: "Report a Bug", href: links.discord },
