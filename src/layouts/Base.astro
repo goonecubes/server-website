@@ -150,32 +150,54 @@ const server = site.servers[0];
 				el.textContent = "[" + text + "]";
 				if (cls !== undefined) el.className = "status-flag " + cls;
 			}
-			fetch("/live/live.json", { cache: "no-store" })
-				.then(function (r) { return r.json(); })
-				.then(function (live) {
-					var s = live.server || {};
-					if (s.online) {
-						set("live-status", "ONLINE", "is-online");
-						set("live-players", s.players + " / " + s.maxPlayers);
-						set("live-map", mapName(s.map || ""));
-					} else {
-						set("live-status", "OFFLINE", "is-offline");
-						set("live-players", "-- / --");
-						set("live-map", "--");
-					}
-					var digits = String(Math.max(0, live.visitors | 0));
-					while (digits.length < 6) digits = "0" + digits;
-					var counter = document.getElementById("live-counter");
-					if (counter) {
-						counter.innerHTML = "";
-						digits.split("").forEach(function (d) {
-							var span = document.createElement("span");
-							span.textContent = d;
-							counter.appendChild(span);
-						});
-					}
-				})
-				.catch(function () { /* keep the placeholders */ });
+			function unknown() {
+				set("live-status", "UNKNOWN", "is-unknown");
+				set("live-players", "-- / --");
+				set("live-map", "--");
+			}
+			function show(live) {
+				var s = live.server || {};
+				// The VPS rewrites live.json every minute; much older means the updater stopped.
+				var fresh = !live.updated || Date.now() / 1000 - live.updated < 600;
+				if (!fresh) {
+					unknown();
+				} else if (s.online) {
+					set("live-status", "ONLINE", "is-online");
+					set("live-players", s.players + " / " + s.maxPlayers);
+					set("live-map", mapName(s.map || ""));
+				} else {
+					set("live-status", "OFFLINE", "is-offline");
+					set("live-players", "-- / --");
+					set("live-map", "--");
+				}
+				var digits = String(Math.max(0, live.visitors | 0));
+				while (digits.length < 6) digits = "0" + digits;
+				var counter = document.getElementById("live-counter");
+				if (counter) {
+					counter.innerHTML = "";
+					digits.split("").forEach(function (d) {
+						var span = document.createElement("span");
+						span.textContent = d;
+						counter.appendChild(span);
+					});
+				}
+			}
+			var busy = false;
+			function refresh() {
+				if (busy || document.hidden) return;
+				busy = true;
+				var ctrl = window.AbortController ? new AbortController() : null;
+				var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+				fetch("/live/live.json", { cache: "no-store", signal: ctrl ? ctrl.signal : undefined })
+					.then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+					.then(show)
+					.catch(unknown)
+					.then(function () { clearTimeout(timer); busy = false; });
+			}
+			refresh();
+			// Keep it current while the page stays open, but don't poll from background tabs.
+			setInterval(refresh, 60000);
+			document.addEventListener("visibilitychange", refresh);
 		})();
 	</script>
 

@@ -166,8 +166,14 @@ code {
 }
 .ticker-track span { padding-right: 60px; white-space: pre; }
 @keyframes ticker { to { transform: translateX(-50%); } }
+/* Hold still while someone is reading it. */
+#ticker:hover .ticker-track { animation-play-state: paused; }
+/* No scrolling: show the whole text, wrapped, instead of a clipped first line. */
 @media (prefers-reduced-motion: reduce) {
-	.ticker-track { animation: none; }
+	#ticker { white-space: normal; line-height: 18px; padding: 4px 10px; }
+	.ticker-track { animation: none; display: block; }
+	.ticker-track span { white-space: normal; padding-right: 0; }
+	.ticker-track span[aria-hidden] { display: none; }
 }
 
 /* ---------- Columns ---------- */
@@ -211,6 +217,7 @@ code {
 .status-flag { color: var(--flag); font-weight: bold; }
 .status-flag.is-online { color: #6dff5a; }
 .status-flag.is-offline { color: #ff6b6b; }
+.status-flag.is-unknown { color: var(--flag); }
 
 .ip-box {
 	font: 11px "Courier New", monospace;
@@ -225,7 +232,9 @@ code {
 .side-links { list-style: none; margin: 0; padding: 0; }
 .side-links li { padding: 1px 0; }
 
-.featured-logo { max-height: 90px; display: block; margin: 0 auto 4px; }
+/* Fixed-height slot: the logo is swapped by script after load, so reserve its space. */
+.featured-link { display: flex; align-items: center; justify-content: center; height: 90px; margin-bottom: 4px; }
+.featured-logo { max-height: 90px; max-width: 100%; display: block; }
 .featured-players { font-weight: bold; }
 .featured-more { font-size: 11px; }
 

@@ -50,7 +50,12 @@
 			splashScreen: false,
 			letterbox: "on",
 			warnOnUnsupportedContent: false,
-			showSwfDownload: false
+			showSwfDownload: false,
+			// Third-party games: no page scripting, no navigateToURL/fscommand, and no opening
+			// links in the player's in-game browser. Loosen per game only if one needs it.
+			allowScriptAccess: false,
+			allowNetworking: "internal",
+			openUrlMode: "deny"
 		};
 		var script = document.createElement("script");
 		script.src = "ruffle/ruffle.js";
