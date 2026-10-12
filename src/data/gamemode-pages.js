@@ -112,7 +112,7 @@ export const pages = [
 		id: "ballrace",
 		name: "Ball Race",
 		theme: { bg: "#603314", border: "#d59c73" },
-		stats: [["Gameplay", "Physics-based puzzle"], ["Players", "8 players (3 needed)"], ["Flow", "One world, level by level"], ["Mood", "Happy"], ["Mic Support", "Yes"]],
+		stats: [["Gameplay", "Physics-based puzzle"], ["Players", "8 players (1 needed)"], ["Flow", "One world, level by level"], ["Mood", "Happy"], ["Mic Support", "Yes"]],
 		tabs: [
 			{
 				id: "overview", label: "Overview", bg: bg("ballrace", "ballrace"),
