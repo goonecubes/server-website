@@ -1,0 +1,816 @@
+{
+	"basic": [
+		{
+			"file": "Clocks.sht",
+			"title": "Clocks",
+			"by": "Coldplay",
+			"sheetBy": ""
+		},
+		{
+			"file": "Zelda_Dungeon.sht",
+			"title": "Zelda Dungeon",
+			"by": "Nintendo",
+			"sheetBy": ""
+		},
+		{
+			"file": "Bennie_and_the_Jets.sht",
+			"title": "Bennie and the Jets",
+			"by": "Elton John",
+			"sheetBy": ""
+		},
+		{
+			"file": "Forest_Maze.sht",
+			"title": "Forest Maze",
+			"by": "Super Mario RPG",
+			"sheetBy": ""
+		},
+		{
+			"file": "The_Flintstones.sht",
+			"title": "The Flintstones",
+			"by": "Hoyt Curtin",
+			"sheetBy": ""
+		},
+		{
+			"file": "Drunken_Sailor.sht",
+			"title": "Drunken Sailor",
+			"by": "Irish Rovers",
+			"sheetBy": ""
+		},
+		{
+			"file": "Final_Countdown.sht",
+			"title": "Final Countdown",
+			"by": "Europe",
+			"sheetBy": ""
+		},
+		{
+			"file": "Burn_It_Down.sht",
+			"title": "Burn It Down",
+			"by": "Linkin Park",
+			"sheetBy": "VoiDeD"
+		},
+		{
+			"file": "Happy_Birthday.sht",
+			"title": "Happy Birthday",
+			"by": "",
+			"sheetBy": "Alfie"
+		},
+		{
+			"file": "Treasure_Trove_Cove.sht",
+			"title": "Treasure Trove Cove",
+			"by": "Banjo-Kazooie",
+			"sheetBy": "PikaUCH"
+		}
+	],
+	"advanced": [
+		{
+			"file": "Clocks.sht",
+			"title": "Clocks",
+			"by": "Coldplay",
+			"sheetBy": ""
+		},
+		{
+			"file": "Game_of_Thrones.sht",
+			"title": "Game of Thrones",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Entertainer.sht",
+			"title": "Entertainer",
+			"by": "",
+			"sheetBy": "Noodleneck"
+		},
+		{
+			"file": "To_Zanarkand.sht",
+			"title": "To Zanarkand",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Under_The_Sea.sht",
+			"title": "Under The Sea",
+			"by": "Little Mermaid",
+			"sheetBy": ""
+		},
+		{
+			"file": "Part_of_Your_World.sht",
+			"title": "Part of Your World",
+			"by": "Little Mermaid",
+			"sheetBy": ""
+		},
+		{
+			"file": "A_Whole_New_World.sht",
+			"title": "A Whole New World",
+			"by": "Aladdin",
+			"sheetBy": ""
+		},
+		{
+			"file": "Can_You_Feel_the_Love_Tonight.sht",
+			"title": "Can You Feel the Love Tonight",
+			"by": "Lion King",
+			"sheetBy": ""
+		},
+		{
+			"file": "You_Got_A_Friend_In_Me.sht",
+			"title": "You Got A Friend In Me",
+			"by": "Toy Story",
+			"sheetBy": ""
+		},
+		{
+			"file": "Pirates_of_the_Caribean.sht",
+			"title": "Pirates of the Caribean",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Bad_Romance.sht",
+			"title": "Bad Romance",
+			"by": "Lady Gaga",
+			"sheetBy": ""
+		},
+		{
+			"file": "Super_Mario_Brothers.sht",
+			"title": "Super Mario Brothers",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Fur_Elise.sht",
+			"title": "Für Elise",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Terminator_Theme.sht",
+			"title": "Terminator Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Metal_Gear_Solid_Theme.sht",
+			"title": "Metal Gear Solid Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Happy_Birthday.sht",
+			"title": "Happy Birthday",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Morrowind_Theme.sht",
+			"title": "Morrowind Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Dueling_Banjos.sht",
+			"title": "Dueling Banjos",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Ocarina_of_Time_Theme.sht",
+			"title": "Ocarina of Time Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Godfather_Theme.sht",
+			"title": "Godfather Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "X_Files_Theme.sht",
+			"title": "X-Files Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "NiGHTS_Dreams_Dreams.sht",
+			"title": "NiGHTS Dreams Dreams",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Saria_s_Song.sht",
+			"title": "Saria's Song",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Still_Alive.sht",
+			"title": "Still Alive",
+			"by": "Portal",
+			"sheetBy": ""
+		},
+		{
+			"file": "Imagine.sht",
+			"title": "Imagine",
+			"by": "John Lennon",
+			"sheetBy": ""
+		},
+		{
+			"file": "Harry_Potter_Theme.sht",
+			"title": "Harry Potter Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Work_It_Out.sht",
+			"title": "Work It Out",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "BBC_Sherlock_Theme.sht",
+			"title": "BBC Sherlock Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Forget_You.sht",
+			"title": "Forget You",
+			"by": "Cee Lo Green",
+			"sheetBy": ""
+		},
+		{
+			"file": "Somewhere_Over_the_Rainbow.sht",
+			"title": "Somewhere Over the Rainbow",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "My_Heart_Will_Go_On.sht",
+			"title": "My Heart Will Go On",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Chariots_of_Fire.sht",
+			"title": "Chariots of Fire",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Tetris_Theme.sht",
+			"title": "Tetris Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Phantom_of_the_Opera.sht",
+			"title": "Phantom of the Opera",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Beethoven_s_Fifth.sht",
+			"title": "Beethoven's Fifth",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Lilium.sht",
+			"title": "Lilium",
+			"by": "Elfen Lied",
+			"sheetBy": ""
+		},
+		{
+			"file": "Hall_of_the_Mountain_King.sht",
+			"title": "Hall of the Mountain King",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Zelda_s_Lullaby.sht",
+			"title": "Zelda's Lullaby",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Lavender_Town.sht",
+			"title": "Lavender Town",
+			"by": "",
+			"sheetBy": "dev02ify"
+		},
+		{
+			"file": "Imperials_March.sht",
+			"title": "Imperials March",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Aozora.sht",
+			"title": "Aozora",
+			"by": "Air",
+			"sheetBy": ""
+		},
+		{
+			"file": "Sailor_Moon_Theme.sht",
+			"title": "Sailor Moon Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Keyboard_Cat.sht",
+			"title": "Keyboard Cat",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "F_U_N.sht",
+			"title": "F.U.N",
+			"by": "Spongebob",
+			"sheetBy": ""
+		},
+		{
+			"file": "Pokemon_Theme.sht",
+			"title": "Pokemon Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Lost_Theme.sht",
+			"title": "Lost Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Clubbed_to_Death.sht",
+			"title": "Clubbed to Death",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Lord_of_the_Rings_Theme.sht",
+			"title": "Lord of the Rings Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Smooth_Criminal.sht",
+			"title": "Smooth Criminal",
+			"by": "Michael Jackson",
+			"sheetBy": ""
+		},
+		{
+			"file": "Stairway_to_Heaven.sht",
+			"title": "Stairway to Heaven",
+			"by": "Led Zeppelin",
+			"sheetBy": ""
+		},
+		{
+			"file": "Nightmare_on_Elm_Street.sht",
+			"title": "Nightmare on Elm Street",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Time.sht",
+			"title": "Time",
+			"by": "Inception",
+			"sheetBy": "boat"
+		},
+		{
+			"file": "Inspector_Gadget.sht",
+			"title": "Inspector Gadget",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Max_Payne_Theme.sht",
+			"title": "Max Payne Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Max_Payne_3_Theme.sht",
+			"title": "Max Payne 3 Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Right_Here_Waiting_For_You.sht",
+			"title": "Right Here Waiting For You",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Amelie.sht",
+			"title": "Amelie",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Let_It_Be.sht",
+			"title": "Let It Be",
+			"by": "The Beatles",
+			"sheetBy": "Rainbow Pancake"
+		},
+		{
+			"file": "Rugrats.sht",
+			"title": "Rugrats",
+			"by": "",
+			"sheetBy": "Plasma"
+		},
+		{
+			"file": "Once_Upon_a_Dream.sht",
+			"title": "Once Upon a Dream",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Just_The_Way_You_Are.sht",
+			"title": "Just The Way You Are",
+			"by": "Bruno Mars",
+			"sheetBy": ""
+		},
+		{
+			"file": "Brahams_Lullaby.sht",
+			"title": "Brahams Lullaby",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Mariage_damour.sht",
+			"title": "Mariage d’amour",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Moonlight_Sonata.sht",
+			"title": "Moonlight Sonata",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Aeris_Theme.sht",
+			"title": "Aeris Theme",
+			"by": "Final Fantasy",
+			"sheetBy": ""
+		},
+		{
+			"file": "Final_Fantasy_X_2_Theme.sht",
+			"title": "Final Fantasy X-2 Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Fade_to_Black.sht",
+			"title": "Fade to Black",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Ballade_pour_AdEline.sht",
+			"title": "Ballade pour AdÈline",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Requiem_for_a_Dream.sht",
+			"title": "Requiem for a Dream",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Love_Story.sht",
+			"title": "Love Story",
+			"by": "Beethoven",
+			"sheetBy": ""
+		},
+		{
+			"file": "The_Bear_Necessities.sht",
+			"title": "The Bear Necessities",
+			"by": "Jungle Book",
+			"sheetBy": ""
+		},
+		{
+			"file": "Never_Gonna_Give_You_Up.sht",
+			"title": "Never Gonna Give You Up",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "I_m_Blue.sht",
+			"title": "I'm Blue",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Symphony_40.sht",
+			"title": "Symphony 40",
+			"by": "Wolfgang Amadeus Mozart",
+			"sheetBy": ""
+		},
+		{
+			"file": "Pearl_Harbor_Theme.sht",
+			"title": "Pearl Harbor Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Crazy_Monsters_and_Nice_Sprites.sht",
+			"title": "Crazy Monsters and Nice Sprites",
+			"by": "Skrillex",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Take_On_Me.sht",
+			"title": "Take On Me",
+			"by": "A-ha",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Kokiri_Forest.sht",
+			"title": "Kokiri Forest",
+			"by": "Zelda OOT",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Song_of_Storms.sht",
+			"title": "Song of Storms",
+			"by": "Zelda OOT",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Dire_Dire_Docks.sht",
+			"title": "Dire Dire Docks",
+			"by": "Super Mario 64",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "File_Select.sht",
+			"title": "File Select",
+			"by": "Super Mario 64",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Start.sht",
+			"title": "Start",
+			"by": "Super Mario 64",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Bomb_omb_Battlefield.sht",
+			"title": "Bomb-omb Battlefield",
+			"by": "Super Mario 64",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Bowser_s_Theme.sht",
+			"title": "Bowser's Theme",
+			"by": "Super Mario 64",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Ending_Song.sht",
+			"title": "Ending Song",
+			"by": "Super Mario 64",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Corridors_of_Time.sht",
+			"title": "Corridors of Time",
+			"by": "Chrono Trigger",
+			"sheetBy": "MalcolmReynolds"
+		},
+		{
+			"file": "On_To_The_Grass_Town.sht",
+			"title": "On To The Grass Town",
+			"by": "Cavestory",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Canon_In_C.sht",
+			"title": "Canon In C",
+			"by": "Johann Pachelbel",
+			"sheetBy": "Misterd909"
+		},
+		{
+			"file": "Black_Mesa_Source_Theme.sht",
+			"title": "Black Mesa Source Theme",
+			"by": "Joel Nielsen",
+			"sheetBy": "MalcolmReynolds"
+		},
+		{
+			"file": "Merry_Go_Round.sht",
+			"title": "Merry Go Round",
+			"by": "Howl's Moving Castle",
+			"sheetBy": "Darkecow"
+		},
+		{
+			"file": "Open_Sesame_Tofu.sht",
+			"title": "Open Sesame Tofu!",
+			"by": "Mother 3",
+			"sheetBy": "Plasma"
+		},
+		{
+			"file": "Overworld.sht",
+			"title": "Overworld",
+			"by": "Super Mario World",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Ending.sht",
+			"title": "Ending",
+			"by": "Super Mario World",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Koopa_Troopa_Beach.sht",
+			"title": "Koopa Troopa Beach",
+			"by": "Super Mario Kart",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Title.sht",
+			"title": "Title",
+			"by": "Super Mario Kart",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "World_1.sht",
+			"title": "World 1",
+			"by": "Super Mario Land",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Title_2.sht",
+			"title": "Title",
+			"by": "Super Mario Bros 2",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Overworld_2.sht",
+			"title": "Overworld",
+			"by": "Super Mario Bros 3",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Green_Hill_Zone.sht",
+			"title": "Green Hill Zone",
+			"by": "Sonic The Hedgehog",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Marble_Zone.sht",
+			"title": "Marble Zone",
+			"by": "Sonic The Hedgehog",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Emerald_Hill_Zone.sht",
+			"title": "Emerald Hill Zone",
+			"by": "Sonic The Hedgehog 2",
+			"sheetBy": "shroompants"
+		},
+		{
+			"file": "Mad_World.sht",
+			"title": "Mad World",
+			"by": "",
+			"sheetBy": "RolandDaemon"
+		},
+		{
+			"file": "Resistance.sht",
+			"title": "Resistance",
+			"by": "Muse",
+			"sheetBy": "HollowCam"
+		},
+		{
+			"file": "Course_Clear.sht",
+			"title": "Course Clear",
+			"by": "Super Mario World",
+			"sheetBy": "GeeMayn"
+		},
+		{
+			"file": "Dead_Island_Theme.sht",
+			"title": "Dead Island Theme",
+			"by": "",
+			"sheetBy": "GeeMayn"
+		},
+		{
+			"file": "Triage_At_Dawn.sht",
+			"title": "Triage At Dawn",
+			"by": "Half-Life 2",
+			"sheetBy": "GeeMayn"
+		},
+		{
+			"file": "Reconstructing_Science.sht",
+			"title": "Reconstructing Science",
+			"by": "Portal 2",
+			"sheetBy": "GeeMayn"
+		},
+		{
+			"file": "Back_to_the_Future.sht",
+			"title": "Back to the Future",
+			"by": "",
+			"sheetBy": "GeeMayn"
+		},
+		{
+			"file": "Gonna_Fly_Now.sht",
+			"title": "Gonna Fly Now",
+			"by": "Rockey",
+			"sheetBy": "GeeMayn"
+		},
+		{
+			"file": "Where_s_Hiccup.sht",
+			"title": "Where's Hiccup",
+			"by": "How to Train Your Dragon",
+			"sheetBy": "nolf"
+		},
+		{
+			"file": "Sweden.sht",
+			"title": "Sweden",
+			"by": "C418",
+			"sheetBy": "nolf"
+		},
+		{
+			"file": "Spice_and_Wolf.sht",
+			"title": "Spice and Wolf",
+			"by": "",
+			"sheetBy": "Puni"
+		},
+		{
+			"file": "Song_of_Healing.sht",
+			"title": "Song of Healing",
+			"by": "",
+			"sheetBy": "satwo"
+		},
+		{
+			"file": "Peaceful_Days.sht",
+			"title": "Peaceful Days",
+			"by": "Chrono Trigger",
+			"sheetBy": ""
+		},
+		{
+			"file": "Departed_Souls.sht",
+			"title": "Departed Souls",
+			"by": "Chrono Cross",
+			"sheetBy": ""
+		},
+		{
+			"file": "Cruel_Angel_s_Thesis.sht",
+			"title": "Cruel Angel's Thesis",
+			"by": "Neon Genesis Evangelion",
+			"sheetBy": ""
+		},
+		{
+			"file": "Promise.sht",
+			"title": "Promise",
+			"by": "Silent Hill 2",
+			"sheetBy": ""
+		},
+		{
+			"file": "Memories_of_the_Past.sht",
+			"title": "Memories of the Past",
+			"by": "Xenosaga",
+			"sheetBy": "Miranda S."
+		},
+		{
+			"file": "Yuna_s_Ballad.sht",
+			"title": "Yuna's Ballad",
+			"by": "Final Fantasy X-2",
+			"sheetBy": "Miranda S."
+		},
+		{
+			"file": "Casper_s_Lullaby.sht",
+			"title": "Casper's Lullaby",
+			"by": "",
+			"sheetBy": "Miranda S."
+		},
+		{
+			"file": "Eternity_Memory_of_Light_Waves_Alternate.sht",
+			"title": "Eternity Memory of Light & Waves (Alternate)",
+			"by": "Final Fantasy X",
+			"sheetBy": ""
+		},
+		{
+			"file": "Silent_Hill_Theme.sht",
+			"title": "Silent Hill Theme",
+			"by": "",
+			"sheetBy": ""
+		},
+		{
+			"file": "Yearning_of_the_Wind.sht",
+			"title": "Yearning of the Wind",
+			"by": "Chrono Trigger",
+			"sheetBy": ""
+		},
+		{
+			"file": "I_Can_Go_the_Distance.sht",
+			"title": "I Can Go the Distance",
+			"by": "Hercules",
+			"sheetBy": "Grace"
+		},
+		{
+			"file": "The_Name_of_Life.sht",
+			"title": "The Name of Life",
+			"by": "Spirited Away",
+			"sheetBy": ""
+		}
+	]
+}
