@@ -153,7 +153,8 @@ def main():
 
 		meta = gmt_meta(text)
 		author_file = sht.with_suffix(".author")
-		credit = read_text(author_file).strip().splitlines()[0].strip() if author_file.exists() else ""
+		credit_lines = read_text(author_file).strip().splitlines() if author_file.exists() else []
+		credit = credit_lines[0].strip() if credit_lines else ""
 		if meta:
 			title, by = meta
 			sheet_by = credit
@@ -184,7 +185,8 @@ def main():
 		else:
 			file = existing["file"]
 			entry = {"file": file, "title": title, "by": by, "sheetBy": sheet_by}
-			changed = existing != entry
+			dest = SHEETS / mode / file
+			changed = existing != entry or not dest.exists() or dest.read_bytes() != payload
 			if changed:
 				existing.update(entry)
 				updated += 1

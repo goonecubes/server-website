@@ -88,7 +88,7 @@
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState !== 4) return;
 			var text = xhr.responseText && (xhr.status === 200 || xhr.status === 0) ? sheetKeys(xhr.responseText) : "";
-			cache[song.file] = text;
+			if (text) cache[song.file] = text;
 			if (token !== request) return;
 			$("notes").textContent = text || "Sheet unavailable.";
 			fit();
